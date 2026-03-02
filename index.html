@@ -126,7 +126,6 @@ html.dark .gradient-text {
   top: 0;
   z-index: 100;
   box-shadow: var(--shadow-md);
-  overflow: hidden;
 }
 .header-inner {
   max-width: 1200px;
@@ -677,8 +676,9 @@ input[type="number"].input-sm { width: 65px; }
 /* Responsive */
 @media (max-width: 768px) {
   .dashboard-grid { grid-template-columns: 1fr; }
-  .header-inner { flex-direction: column; align-items: stretch; }
-  .nav { justify-content: center; }
+  .header-inner { flex-direction: column; align-items: stretch; overflow: visible; }
+  .nav { flex-wrap: wrap; justify-content: center; gap: 4px; }
+  .nav button { white-space: nowrap; padding: 0.35rem 0.6rem; font-size: 0.78rem; }
   .stat-row { flex-direction: column; }
   .assessment-table { font-size: 0.8rem; }
   .assessment-table th, .assessment-table td { padding: 0.5rem 0.4rem; }
