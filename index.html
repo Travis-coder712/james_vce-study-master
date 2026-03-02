@@ -1,0 +1,3134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>James VCE Study Master</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%231a365d'/><stop offset='50%25' stop-color='%236366f1'/><stop offset='100%25' stop-color='%238b5cf6'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><polygon points='50,22 88,40 50,54 12,40' fill='white'/><rect x='47' y='40' width='6' height='28' fill='white' rx='2'/><path d='M28 46 L28 62 Q50 76 72 62 L72 46' fill='none' stroke='white' stroke-width='3.5'/><circle cx='50' cy='72' r='4.5' fill='%23fbbf24'/></svg>">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="VCE Study">
+<link rel="manifest" href="data:application/json,%7B%22name%22%3A%22James%20VCE%20Study%20Master%22%2C%22short_name%22%3A%22VCE%20Study%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231a365d%22%2C%22theme_color%22%3A%22%231a365d%22%7D">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: hidden; }
+body { overflow-x: hidden; max-width: 100vw; }
+
+:root {
+  --bg: #f0f4f8;
+  --surface: #ffffff;
+  --text: #1a202c;
+  --text-muted: #718096;
+  --border: #e2e8f0;
+  --primary: #1a365d;
+  --primary-light: #2b6cb0;
+  --accent: #3182ce;
+  --danger: #e53e3e;
+  --success: #38a169;
+  --warning: #d69e2e;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+  --methods: #6366f1;
+  --specialist: #059669;
+  --english: #dc2626;
+  --physics: #d97706;
+  --history: #8b5cf6;
+  --music: #e11d48;
+  --bg-subtle: #f7fafc;
+  --success-bg: #f0fff4;
+  --success-border: #c6f6d5;
+  --info-bg: #ebf8ff;
+  --info-border: #bee3f8;
+  --info-text: #2a4365;
+  --warning-bg: #fffbeb;
+  --warning-border: #fde68a;
+  --warning-text: #92400e;
+  --danger-bg: #fff5f5;
+  --danger-border: #fed7d7;
+  --danger-text: #c53030;
+}
+
+/* Dark Mode */
+html.dark {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --primary: #0f172a;
+  --primary-light: #1e3a5f;
+  --accent: #60a5fa;
+  --danger: #f87171;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --shadow: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.5), 0 4px 6px rgba(0,0,0,0.3);
+  --bg-subtle: #1a2332;
+  --success-bg: rgba(74, 222, 128, 0.1);
+  --success-border: rgba(74, 222, 128, 0.25);
+  --info-bg: rgba(96, 165, 250, 0.1);
+  --info-border: rgba(96, 165, 250, 0.25);
+  --info-text: #93c5fd;
+  --warning-bg: rgba(251, 191, 36, 0.1);
+  --warning-border: rgba(251, 191, 36, 0.25);
+  --warning-text: #fcd34d;
+  --danger-bg: rgba(248, 113, 113, 0.1);
+  --danger-border: rgba(248, 113, 113, 0.25);
+  --danger-text: #fca5a5;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  background-image:
+    radial-gradient(at 20% 80%, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
+    radial-gradient(at 80% 20%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(49, 130, 206, 0.04) 0%, transparent 70%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+html.dark body {
+  background-image:
+    radial-gradient(at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+    radial-gradient(at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(49, 130, 206, 0.07) 0%, transparent 70%);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #3182ce);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+html.dark .gradient-text {
+  background: linear-gradient(135deg, #818cf8, #a78bfa, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Modern heading feel */
+.hero-title, .section-title, .stat-number, h1, h2, h3 {
+  letter-spacing: -0.02em;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: white;
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.header h1 span { font-size: 1.6rem; }
+
+/* Navigation */
+.nav {
+  display: flex;
+  gap: 0.25rem;
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 3px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav button {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.8);
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav button:hover { background: rgba(255,255,255,0.15); color: white; }
+.nav button.active { background: rgba(255,255,255,0.25); color: white; }
+
+/* Main Content */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  overflow-x: hidden;
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+/* Dashboard */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.dashboard-grid .full-width { grid-column: 1 / -1; }
+.stat-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.stat-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  flex: 1;
+  min-width: 140px;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+/* Section headers */
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Assessment list */
+.assessment-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.assessment-item:last-child { border-bottom: none; }
+.assessment-name { font-weight: 600; font-size: 0.95rem; }
+.assessment-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+.assessment-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge-weight {
+  background: var(--primary);
+  color: white;
+}
+.badge-urgent {
+  background: var(--danger-bg);
+  color: var(--danger-text);
+}
+.badge-soon {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+}
+.badge-upcoming {
+  background: var(--success-bg);
+  color: var(--success);
+}
+.badge-done {
+  background: var(--success-bg);
+  color: var(--success);
+}
+.badge-subject {
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  color: white;
+}
+
+/* Subject cards */
+.subject-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  transition: background 0.15s;
+  user-select: none;
+}
+.subject-header:hover { background: var(--bg-subtle); }
+.subject-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-right: 0.75rem;
+  color: white;
+  flex-shrink: 0;
+}
+.subject-info { flex: 1; }
+.subject-name { font-weight: 700; font-size: 1.05rem; }
+.subject-subtitle { font-size: 0.8rem; color: var(--text-muted); }
+.subject-chevron {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+.subject-chevron.open { transform: rotate(90deg); }
+.subject-body {
+  display: none;
+  padding: 0 1.5rem 1.5rem;
+}
+.subject-body.open { display: block; }
+
+/* Assessment table */
+.assessment-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.assessment-table th {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.assessment-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.assessment-table tr:last-child td { border-bottom: none; }
+.assessment-table tr:hover td { background: var(--bg-subtle); }
+
+/* Weight bar */
+.weight-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 100px;
+}
+.weight-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.weight-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+.weight-pct {
+  font-weight: 700;
+  font-size: 0.85rem;
+  min-width: 35px;
+  text-align: right;
+}
+
+/* Inputs */
+.input-sm {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+.input-sm:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(49,130,206,0.1);
+}
+input[type="date"].input-sm { min-width: 130px; }
+input[type="number"].input-sm { width: 65px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: #2b6cb0; }
+.btn-secondary { background: var(--bg-subtle); color: var(--text); }
+.btn-secondary:hover { background: var(--border); }
+.btn-danger { background: var(--danger-bg); color: var(--danger-text); }
+.btn-danger:hover { background: var(--danger-border); }
+.btn-sm { padding: 0.3rem 0.6rem; font-size: 0.8rem; }
+.btn-icon { padding: 0.35rem; border-radius: 6px; background: none; border: 1px solid var(--border); }
+.btn-icon:hover { background: var(--bg-subtle); }
+
+/* Progress ring */
+.progress-ring {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.progress-bar-horiz {
+  flex: 1;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* Subject progress on dashboard */
+.subject-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.subject-progress-row:last-child { border-bottom: none; }
+.subject-progress-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.subject-progress-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  min-width: 120px;
+}
+.subject-progress-stats {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  min-width: 50px;
+  text-align: right;
+}
+
+/* Timeline item */
+.timeline-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+.timeline-item:last-child { border-bottom: none; }
+.timeline-date {
+  text-align: center;
+  min-width: 55px;
+  flex-shrink: 0;
+}
+.timeline-day {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.timeline-month {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.timeline-content { flex: 1; }
+.timeline-title { font-weight: 600; font-size: 0.9rem; }
+.timeline-sub { font-size: 0.8rem; color: var(--text-muted); }
+.timeline-countdown {
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding-top: 0.2rem;
+}
+
+/* Info box */
+.info-box {
+  background: var(--info-bg);
+  border: 1px solid var(--info-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--info-text);
+  margin-bottom: 1rem;
+}
+.info-box.warning {
+  background: var(--warning-bg);
+  border-color: var(--warning-border);
+  color: var(--warning-text);
+}
+
+/* Notes textarea */
+.notes-area {
+  width: 100%;
+  min-height: 60px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+.notes-area:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Subject detail header */
+.subject-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.subject-detail-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+/* Export/Import */
+.settings-section {
+  margin-bottom: 1.5rem;
+}
+.settings-section h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+.modal h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.modal-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 0.75rem;
+}
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+}
+.empty-state-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.empty-state-text { font-size: 0.95rem; }
+
+/* Weighted avg display */
+.weighted-avg {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+.weighted-avg-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--success);
+}
+.weighted-avg-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .header-inner { flex-direction: column; align-items: stretch; }
+  .nav { justify-content: center; }
+  .stat-row { flex-direction: column; }
+  .assessment-table { font-size: 0.8rem; }
+  .assessment-table th, .assessment-table td { padding: 0.5rem 0.4rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .main { padding: 1rem; }
+  .hide-mobile { display: none; }
+}
+
+@media (max-width: 480px) {
+  .header h1 { font-size: 1.1rem; }
+  .nav button { font-size: 0.78rem; padding: 0.35rem 0.6rem; }
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 40%, #6366f1 70%, #8b5cf6 100%);
+  border-radius: var(--radius);
+  padding: 2rem 2rem 1.5rem;
+  color: white;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.25rem; }
+.hero-subtitle { font-size: 0.95rem; opacity: 0.9; margin-bottom: 1rem; max-width: 600px; }
+.hero-subjects {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.hero-chip {
+  background: rgba(255,255,255,0.2);
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+/* Semester Selector */
+.semester-selector {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.semester-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.semester-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.semester-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+.semester-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Quiz Styles */
+.quiz-container { max-width: 600px; margin: 0 auto; }
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.quiz-progress {
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #6366f1);
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+.quiz-question {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+.quiz-topic {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
+.quiz-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  color: var(--text);
+}
+.quiz-option:hover { border-color: var(--accent); background: var(--info-bg); }
+.quiz-option.correct { border-color: var(--success); background: var(--success-bg); }
+.quiz-option.incorrect { border-color: var(--danger); background: var(--danger-bg); }
+.quiz-option.dimmed { opacity: 0.5; pointer-events: none; }
+.quiz-explanation {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background: var(--info-bg);
+  border: 1px solid var(--info-border);
+  color: var(--info-text);
+}
+.quiz-result {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.quiz-score {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.quiz-subject-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.quiz-subject-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  text-align: left;
+  color: var(--text);
+}
+.quiz-subject-btn:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.quiz-subject-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: white; flex-shrink: 0;
+}
+
+/* Resource Styles */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+.resource-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  transition: all 0.2s ease;
+}
+.resource-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.resource-type {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.resource-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.15rem; }
+.resource-desc { font-size: 0.8rem; color: var(--text-muted); }
+.resource-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.resource-link:hover { text-decoration: underline; }
+
+/* Scaling slider */
+.scaling-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--bg-subtle);
+  border-radius: 10px;
+}
+.scaling-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 8px;
+  background: linear-gradient(90deg, #e53e3e, #d69e2e, #38a169, #3182ce);
+  border-radius: 4px;
+  outline: none;
+}
+.scaling-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid var(--accent);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.scaling-score-display {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  min-width: 50px;
+  text-align: center;
+}
+html.dark .scaling-score-display { color: var(--accent); }
+
+/* Dark mode header & hero */
+html.dark .header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+}
+html.dark .hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #4338ca 70%, #6d28d9 100%);
+}
+html.dark .scaling-slider::-webkit-slider-thumb {
+  background: var(--surface);
+  border-color: var(--accent);
+}
+html.dark input, html.dark select, html.dark textarea {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.1);
+}
+
+/* Game overlay */
+.game-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.game-overlay.open { display: flex; }
+.game-container {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+}
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.game-header h2 { font-size: 1.1rem; margin: 0; }
+.game-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 0.25rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+  line-height: 1;
+}
+.game-close:hover { background: var(--bg-subtle); }
+.game-body { padding: 1.25rem; }
+
+/* Memory card */
+.memory-card {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: 2px solid transparent;
+  color: white;
+  font-weight: 700;
+}
+.memory-card.flipped {
+  background: var(--surface);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+.memory-card.matched {
+  background: var(--success-bg);
+  border-color: var(--success);
+  transform: scale(0.95);
+  cursor: default;
+}
+.memory-card:not(.flipped):not(.matched):hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <h1><span id="rocketIcon" style="cursor:pointer;">🚀</span> James VCE Study Master <button class="theme-toggle" onclick="toggleDarkMode()" id="themeToggle" title="Toggle dark mode">🌙</button></h1>
+    <div class="nav" id="nav">
+      <button class="active" data-view="dashboard">Dashboard</button>
+      <button data-view="year11">Year 11</button>
+      <button data-view="year12">Year 12</button>
+      <button data-view="study">Study Zone</button>
+      <button data-view="uni">Uni & Careers</button>
+      <button data-view="settings">Settings</button>
+    </div>
+  </div>
+</div>
+
+<div class="main" id="app"></div>
+
+<!-- Add/Edit Assessment Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<!-- Easter Egg Game Overlay -->
+<div class="game-overlay" id="gameOverlay">
+  <div class="game-container" id="gameContainer"></div>
+</div>
+
+<script>
+// ============================================================
+// DATA: Subject and assessment definitions
+// ============================================================
+const DEFAULT_SUBJECTS = [
+  {
+    id: 'yr11-methods',
+    name: 'Mathematical Methods',
+    year: 11,
+    units: 'Units 1 & 2',
+    color: '#6366f1',
+    icon: '\u{1F4D0}',
+    vcaaWeighted: false,
+    description: 'Functions, algebra, calculus and probability. CAS calculator is essential.',
+    notes: 'Year 11 weightings are set by Warranwood Rudolf Steiner. The defaults below are typical \u2014 update them to match your actual assessment outline.',
+    assessments: [
+      { id: 'mm-u1t1', name: 'Topic Test 1: Functions, Relations & Graphs', type: 'Test', weight: 10, unit: 1, area: 'AoS 1', description: 'Covers polynomial, power and exponential functions, domain/range, transformations.' },
+      { id: 'mm-u1t2', name: 'Topic Test 2: Algebra, Number & Structure', type: 'Test', weight: 10, unit: 1, area: 'AoS 2', description: 'Algebraic manipulation, simultaneous equations, inequalities.' },
+      { id: 'mm-u1inv', name: 'Mathematical Investigation', type: 'Investigation', weight: 12, unit: 1, area: 'AoS 1\u20132', description: 'Extended investigation over ~1 week. Formulation, exploration, communication of mathematical concepts.' },
+      { id: 'mm-s1ex', name: 'Semester 1 Exam', type: 'Exam', weight: 18, unit: 1, area: 'All Unit 1', description: 'Covers all Unit 1 content. Two sections: technology-free and technology-active (CAS).' },
+      { id: 'mm-u2t3', name: 'Topic Test 3: Calculus', type: 'Test', weight: 10, unit: 2, area: 'AoS 3', description: 'Differentiation, rates of change, graphing with calculus.' },
+      { id: 'mm-u2t4', name: 'Topic Test 4: Probability & Statistics', type: 'Test', weight: 10, unit: 2, area: 'AoS 4', description: 'Counting methods, probability rules, discrete distributions.' },
+      { id: 'mm-u2inv', name: 'Modelling / CAS Investigation', type: 'Investigation', weight: 12, unit: 2, area: 'AoS 3\u20134', description: 'Modelling task or CAS-based investigation. Apply computational thinking.' },
+      { id: 'mm-s2ex', name: 'Semester 2 Exam', type: 'Exam', weight: 18, unit: 2, area: 'All Unit 2', description: 'Covers all Unit 2 content. Prepares for the style of Units 3&4 exams.' }
+    ]
+  },
+  {
+    id: 'yr11-specialist',
+    name: 'Specialist Mathematics',
+    year: 11,
+    units: 'Units 1 & 2',
+    color: '#059669',
+    icon: '\u{1F9EE}',
+    vcaaWeighted: false,
+    description: 'Proof, logic, complex numbers, vectors, and advanced algebra. Must be studied alongside Methods.',
+    notes: 'Year 11 weightings are set by Warranwood Rudolf Steiner. Update to match your actual assessment outline. Specialist requires concurrent enrolment in Methods.',
+    assessments: [
+      { id: 'sm-u1t1', name: 'SAC 1: Algebra & Structure', type: 'Test', weight: 10, unit: 1, area: 'AoS 1', description: 'Number systems, algebraic identities, polynomial division, partial fractions.' },
+      { id: 'sm-u1t2', name: 'SAC 2: Sequences & Series', type: 'Test', weight: 10, unit: 1, area: 'AoS 2', description: 'Arithmetic and geometric sequences, series, convergence, applications.' },
+      { id: 'sm-u1t3', name: 'SAC 3: Logic & Proof', type: 'Test', weight: 10, unit: 1, area: 'AoS 3', description: 'Logical connectives, truth tables, proof by contradiction, mathematical induction.' },
+      { id: 'sm-u1inv', name: 'Mathematical Investigation', type: 'Investigation', weight: 15, unit: 1, area: 'AoS 1\u20133', description: 'Extended investigation applying proof techniques or algebraic methods.' },
+      { id: 'sm-s1ex', name: 'Semester 1 Exam', type: 'Exam', weight: 15, unit: 1, area: 'All Unit 1', description: 'Covers all Unit 1 content. Technology-free and technology-active sections.' },
+      { id: 'sm-u2t4', name: 'SAC 4: Graph Theory', type: 'Test', weight: 10, unit: 2, area: 'AoS 4', description: 'Graphs, vertices, edges, paths, circuits, adjacency matrices, applications.' },
+      { id: 'sm-u2t5', name: 'SAC 5: Combinatorics', type: 'Test', weight: 10, unit: 2, area: 'AoS 5', description: 'Permutations, combinations, inclusion-exclusion, pigeonhole principle.' },
+      { id: 'sm-s2ex', name: 'Semester 2 Exam', type: 'Exam', weight: 20, unit: 2, area: 'All Unit 2', description: 'Covers all Unit 2 content. Prepares for Units 3&4 exam format.' }
+    ]
+  },
+  {
+    id: 'yr11-english',
+    name: 'English',
+    year: 11,
+    units: 'Units 1 & 2',
+    color: '#dc2626',
+    icon: '\u{1F4D6}',
+    vcaaWeighted: false,
+    description: 'Text analysis, creative writing, and argument analysis. Compulsory VCE subject.',
+    notes: 'English is the only compulsory VCE subject. Set texts are chosen by Warranwood Rudolf Steiner. Update weightings as needed.',
+    assessments: [
+      { id: 'en-u1tr', name: 'Text Response: Reading & Exploring Texts', type: 'Essay', weight: 15, unit: 1, area: 'AoS 1', description: 'Personal or analytical response to a set text. Focus on ideas, themes, and connections.' },
+      { id: 'en-u1cw', name: 'Creative Writing: Crafting Texts', type: 'Creative', weight: 15, unit: 1, area: 'AoS 2', description: 'Two original creative texts. Genres may include short story, speech, poetry, feature article, memoir.' },
+      { id: 'en-s1ex', name: 'Semester 1 Exam', type: 'Exam', weight: 20, unit: 1, area: 'All Unit 1', description: 'Text response under timed conditions. Usually 2 hours.' },
+      { id: 'en-u2tr', name: 'Text Response: Analytical Response', type: 'Essay', weight: 15, unit: 2, area: 'AoS 1', description: 'Formal analytical essay on a set text. Focus on how meaning is constructed.' },
+      { id: 'en-u2aa', name: 'Analysing Argument', type: 'Analysis', weight: 15, unit: 2, area: 'AoS 2', description: 'Analyse use of argument and persuasive language in media texts. May include oral component.' },
+      { id: 'en-s2ex', name: 'Semester 2 Exam', type: 'Exam', weight: 20, unit: 2, area: 'All Unit 2', description: 'Text response and/or argument analysis under timed conditions.' }
+    ]
+  },
+  {
+    id: 'yr11-physics',
+    name: 'Physics',
+    year: 11,
+    units: 'Units 1 & 2',
+    color: '#d97706',
+    icon: '\u{269B}\uFE0F',
+    vcaaWeighted: false,
+    description: 'Thermodynamics, electricity, light, waves, motion, and nuclear physics.',
+    notes: 'Includes practical investigations. Update weightings to match Warranwood Rudolf Steiner.',
+    assessments: [
+      { id: 'ph-u1s1', name: 'SAC 1: Data Analysis (Thermodynamics)', type: 'SAC', weight: 12, unit: 1, area: 'AoS 1', description: 'Thermal energy, heat transfer, specific heat capacity. Data collection and analysis task.' },
+      { id: 'ph-u1s2', name: 'SAC 2: Comparison & Evaluation (Electricity)', type: 'SAC', weight: 10, unit: 1, area: 'AoS 2', description: 'Electric circuits, Ohm\u2019s law, series & parallel, power. Compare physical explanations.' },
+      { id: 'ph-u1s3', name: 'SAC 3: Problem Solving (Waves & Light)', type: 'SAC', weight: 10, unit: 1, area: 'AoS 3', description: 'Wave properties, reflection, refraction, diffraction, interference, EM spectrum.' },
+      { id: 'ph-s1ex', name: 'Semester 1 Exam', type: 'Exam', weight: 18, unit: 1, area: 'All Unit 1', description: 'Covers all Unit 1: thermodynamics, electricity, waves & light.' },
+      { id: 'ph-u2s1', name: 'SAC 4: Practical Investigation (Motion)', type: 'SAC', weight: 13, unit: 2, area: 'AoS 1', description: 'Newton\u2019s laws, kinematics, forces, momentum, energy. Student-designed practical.' },
+      { id: 'ph-u2s2', name: 'SAC 5: Student-Designed Investigation', type: 'Investigation', weight: 15, unit: 2, area: 'AoS 2\u20133', description: 'Independent investigation into a physics question. Minimum 7 hours. Lab report format.' },
+      { id: 'ph-s2ex', name: 'Semester 2 Exam', type: 'Exam', weight: 22, unit: 2, area: 'All Unit 2', description: 'Covers all Unit 2: motion, nuclear physics, and investigation skills.' }
+    ]
+  },
+  {
+    id: 'yr11-history',
+    name: 'Modern History',
+    year: 11,
+    units: 'Units 1 & 2',
+    color: '#8b5cf6',
+    icon: '\u{1F3DB}\uFE0F',
+    vcaaWeighted: false,
+    description: 'Ideology, conflict, and the modern world since 1945. Source analysis and essay skills.',
+    notes: 'Units 1&2 is Modern History. Units 3&4 is History: Revolutions. Update weightings to match Warranwood Rudolf Steiner.',
+    assessments: [
+      { id: 'hi-u1s1', name: 'SAC 1: Historical Inquiry', type: 'Inquiry', weight: 20, unit: 1, area: 'AoS 1', description: 'Research-based inquiry into an ideology or conflict from the late 19th to mid-20th century.' },
+      { id: 'hi-u1s2', name: 'SAC 2: Source Analysis', type: 'Analysis', weight: 15, unit: 1, area: 'AoS 2', description: 'Evaluation of historical sources for reliability, usefulness, and perspective.' },
+      { id: 'hi-s1ex', name: 'Semester 1 Exam', type: 'Exam', weight: 15, unit: 1, area: 'All Unit 1', description: 'Covers ideology and conflict. Short answer and extended response.' },
+      { id: 'hi-u2s1', name: 'SAC 3: Essay (The Modern World)', type: 'Essay', weight: 15, unit: 2, area: 'AoS 1', description: 'Extended response on social, cultural, or political change since 1945.' },
+      { id: 'hi-u2s2', name: 'SAC 4: Analysis of Historical Interpretations', type: 'Analysis', weight: 15, unit: 2, area: 'AoS 2', description: 'Compare and evaluate different historical interpretations of a key event or movement.' },
+      { id: 'hi-s2ex', name: 'Semester 2 Exam', type: 'Exam', weight: 20, unit: 2, area: 'All Unit 2', description: 'Covers the modern world since 1945. Source analysis and essay.' }
+    ]
+  },
+  {
+    id: 'yr11-music',
+    name: 'Music Inquiry',
+    year: 11,
+    units: 'Units 3 & 4',
+    color: '#e11d48',
+    icon: '\u{1F3B5}',
+    vcaaWeighted: true,
+    description: 'Performance, composition, analysis and aural skills. Externally assessed folio is the major component.',
+    notes: 'VCAA-mandated weightings: SACs = 35% (Unit 3: 30%, Unit 4: 5%), Externally Assessed Task (folio) = 50%, Exam = 15%. Completing Units 3&4 in Year 11 means this contributes to ATAR as a 5th or 6th subject.',
+    assessments: [
+      { id: 'mu-u3s1', name: 'Unit 3 SAC: Performance & Analysis', type: 'SAC', weight: 30, unit: 3, area: 'AoS 1\u20133', description: 'Performing a work in the style of a selected creator, composing/arranging, analysing music elements, and aural tasks.' },
+      { id: 'mu-u4s1', name: 'Unit 4 SAC: Project Demonstration', type: 'SAC', weight: 5, unit: 4, area: 'AoS 1', description: 'Project demonstration and documentation showing connection between inquiry focus and creative output.' },
+      { id: 'mu-eat', name: 'Externally Assessed Task (Folio)', type: 'Folio', weight: 50, unit: '3 & 4', area: 'All Outcomes', description: 'Major folio including documentation, a video performance recording, and an audio/video composition. Assessed by VCAA panel, not school.' },
+      { id: 'mu-exam', name: 'End-of-Year Exam (Aural & Written)', type: 'Exam', weight: 15, unit: '3 & 4', area: 'Aural & Written', description: '1 hour. Listening and responding to previously unheard excerpts. Written analysis of music elements.' }
+    ]
+  },
+  {
+    id: 'yr12-english',
+    name: 'English',
+    year: 12,
+    units: 'Units 3 & 4',
+    color: '#dc2626',
+    icon: '\u{1F4DD}',
+    vcaaWeighted: true,
+    description: 'Analytical and creative responses to texts, and presenting a point of view. Compulsory for ATAR.',
+    notes: 'VCAA-mandated weightings: Unit 3 SACs = 25%, Unit 4 SACs = 25%, Exam = 50%. English is the only compulsory subject for ATAR calculation.',
+    assessments: [
+      { id: 'en2-u3s1', name: 'SAC 1: Reading & Responding to Texts', type: 'SAC', weight: 10, unit: 3, area: 'AoS 1 / Outcome 1', description: 'Analytical response to a selected text. Interpreting ideas, themes, and the ways authors construct meaning. ~800\u20131000 words.' },
+      { id: 'en2-u3s2', name: 'SAC 2: Creating Texts', type: 'SAC', weight: 7.5, unit: 3, area: 'AoS 2 / Outcome 2', description: 'Create a written text for a specific audience and purpose. Includes a written statement of intention.' },
+      { id: 'en2-u3s3', name: 'SAC 3: Analysing Argument', type: 'SAC', weight: 7.5, unit: 3, area: 'AoS 3 / Outcome 3', description: 'Analyse the use of argument and persuasive language in media texts. ~600\u2013800 words.' },
+      { id: 'en2-u4s1', name: 'SAC 4: Reading & Responding to Texts', type: 'SAC', weight: 12.5, unit: 4, area: 'AoS 1 / Outcome 1', description: 'Close analysis of a selected text. Extended analytical interpretation. ~800\u20131000 words.' },
+      { id: 'en2-u4s2', name: 'SAC 5: Creating & Presenting Texts', type: 'SAC', weight: 12.5, unit: 4, area: 'AoS 2 / Outcome 2', description: 'Create and present a sustained written text with statement of intention.' },
+      { id: 'en2-exam', name: 'End-of-Year Exam', type: 'Exam', weight: 50, unit: '3 & 4', area: 'All Outcomes', description: '3 hours. Section A: Analytical interpretation (30 marks). Section B: Comparative analysis (30 marks). Section C: Argument and persuasive language (30 marks).' }
+    ]
+  },
+  {
+    id: 'yr12-methods',
+    name: 'Mathematical Methods',
+    year: 12,
+    units: 'Units 3 & 4',
+    color: '#6366f1',
+    icon: '\u{1F4D0}',
+    vcaaWeighted: true,
+    description: 'Functions, algebra, calculus, probability & statistics. Prerequisite for many university courses.',
+    notes: 'VCAA-mandated weightings: SACs = 40%, Exam 1 (tech-free) = 20%, Exam 2 (CAS) = 40%. Methods scales very well \u2014 one of the most rewarding subjects for ATAR.',
+    assessments: [
+      { id: 'mm2-u3s1', name: 'SAC 1: Application Task', type: 'SAC', weight: 20, unit: 3, area: 'Outcome 1', description: 'Mathematical investigation over 2\u20133 classes. Functions, algebra, calculus in applied context.' },
+      { id: 'mm2-u4s1', name: 'SAC 2: Modelling or Problem-Solving Task 1', type: 'SAC', weight: 8, unit: 4, area: 'Outcome 2 (Part 1)', description: 'Problem-solving task covering Unit 4 content including integration and probability distributions.' },
+      { id: 'mm2-u4s2', name: 'SAC 3: Modelling or Problem-Solving Task 2', type: 'SAC', weight: 12, unit: 4, area: 'Outcome 2 (Part 2)', description: 'Second problem-solving task. CAS calculator permitted.' },
+      { id: 'mm2-exam1', name: 'Exam 1: Technology-Free', type: 'Exam', weight: 20, unit: '3 & 4', area: 'All Outcomes', description: '1 hour. No calculator, no notes. Tests algebraic manipulation, calculus by hand.' },
+      { id: 'mm2-exam2', name: 'Exam 2: Technology-Active (CAS)', type: 'Exam', weight: 40, unit: '3 & 4', area: 'All Outcomes', description: '2 hours. Multiple choice (20 marks) and extended response (60 marks). CAS permitted.' }
+    ]
+  },
+  {
+    id: 'yr12-specialist',
+    name: 'Specialist Mathematics',
+    year: 12,
+    units: 'Units 3 & 4',
+    color: '#059669',
+    icon: '\u{1F9EE}',
+    vcaaWeighted: true,
+    description: 'Complex analysis, vectors, differential equations, mechanics, and statistical inference.',
+    notes: 'VCAA-mandated weightings: SACs = 40%, Exam 1 (tech-free) = 20%, Exam 2 (CAS) = 40%. Specialist Maths scales extremely well \u2014 the highest-scaling VCE subject.',
+    assessments: [
+      { id: 'sm2-u3s1', name: 'SAC 1: Application Task', type: 'SAC', weight: 20, unit: 3, area: 'Outcome 1', description: 'Extended investigation over 2\u20133 classes. Complex numbers, vectors, differential equations in applied context.' },
+      { id: 'sm2-u4s1', name: 'SAC 2: Modelling or Problem-Solving Task 1', type: 'SAC', weight: 10, unit: 4, area: 'Outcome 2 (Part 1)', description: 'Mechanics, kinematics, dynamics, or statistical inference problem-solving.' },
+      { id: 'sm2-u4s2', name: 'SAC 3: Modelling or Problem-Solving Task 2', type: 'SAC', weight: 10, unit: 4, area: 'Outcome 2 (Part 2)', description: 'Second problem-solving task covering breadth of Unit 4 content.' },
+      { id: 'sm2-exam1', name: 'Exam 1: Technology-Free', type: 'Exam', weight: 20, unit: '3 & 4', area: 'All Outcomes', description: '1 hour. No calculator, no notes. Pure mathematical reasoning and proof.' },
+      { id: 'sm2-exam2', name: 'Exam 2: Technology-Active (CAS)', type: 'Exam', weight: 40, unit: '3 & 4', area: 'All Outcomes', description: '2 hours. CAS calculator and 1 bound reference permitted. Extended problems across all areas.' }
+    ]
+  },
+  {
+    id: 'yr12-physics',
+    name: 'Physics',
+    year: 12,
+    units: 'Units 3 & 4',
+    color: '#d97706',
+    icon: '\u{269B}\uFE0F',
+    vcaaWeighted: true,
+    description: 'Fields, electromagnetism, light, matter, and the standard model. Strong ATAR scaling.',
+    notes: 'VCAA-mandated weightings: Unit 3 SACs = 30%, Unit 4 SACs = 20%, Exam = 50%. Five SAC tasks total across the year.',
+    assessments: [
+      { id: 'ph2-u3s1', name: 'SAC 1: Fields (Gravity & Electromagnetism)', type: 'SAC', weight: 10, unit: 3, area: 'AoS 1 / Outcome 1', description: 'Gravitational and electric fields. How objects interact without contact.' },
+      { id: 'ph2-u3s2', name: 'SAC 2: Electromagnetism & Electricity Generation', type: 'SAC', weight: 10, unit: 3, area: 'AoS 2 / Outcome 2', description: 'Electromagnetic induction, generators, transformers, power transmission.' },
+      { id: 'ph2-u3s3', name: 'SAC 3: Motion (Special Relativity)', type: 'SAC', weight: 10, unit: 3, area: 'AoS 3 / Outcome 3', description: 'Einstein\u2019s special relativity, time dilation, length contraction, mass-energy equivalence.' },
+      { id: 'ph2-u4s1', name: 'SAC 4: Light & Matter (Quantum)', type: 'SAC', weight: 10, unit: 4, area: 'AoS 1 / Outcome 1', description: 'Wave-particle duality, photoelectric effect, atomic spectra, standard model of particle physics.' },
+      { id: 'ph2-u4s2', name: 'SAC 5: Student-Designed Investigation', type: 'Investigation', weight: 10, unit: 4, area: 'AoS 2 / Outcome 2', description: 'Independent practical investigation. Scientific method, data analysis, evaluation.' },
+      { id: 'ph2-exam', name: 'End-of-Year Exam', type: 'Exam', weight: 50, unit: '3 & 4', area: 'All Outcomes', description: '2.5 hours. Multiple choice and short answer. Covers all Units 3 & 4 content.' }
+    ]
+  },
+  {
+    id: 'yr12-history',
+    name: 'History: Revolutions',
+    year: 12,
+    units: 'Units 3 & 4',
+    color: '#8b5cf6',
+    icon: '\u{1F3DB}\uFE0F',
+    vcaaWeighted: true,
+    description: 'Causes and consequences of two revolutions. Source analysis, historiography, and essay writing.',
+    notes: 'VCAA-mandated weightings: Unit 3 SACs = 25%, Unit 4 SACs = 25%, Exam = 50%. Four compulsory SAC task types: analytical exercise, analysis of interpretations, essay, historical inquiry.',
+    assessments: [
+      { id: 'hi2-u3s1', name: 'SAC 1: Causes of Revolution 1', type: 'SAC', weight: 12.5, unit: 3, area: 'AoS 1 / Outcome 1', description: 'Historical inquiry or essay on the causes of the first revolution studied.' },
+      { id: 'hi2-u3s2', name: 'SAC 2: Consequences of Revolution 1', type: 'SAC', weight: 12.5, unit: 3, area: 'AoS 2 / Outcome 2', description: 'Analysis of primary sources or historical interpretations on the consequences.' },
+      { id: 'hi2-u4s1', name: 'SAC 3: Causes of Revolution 2', type: 'SAC', weight: 12.5, unit: 4, area: 'AoS 1 / Outcome 1', description: 'Essay or historical inquiry on the causes of the second revolution.' },
+      { id: 'hi2-u4s2', name: 'SAC 4: Consequences of Revolution 2', type: 'SAC', weight: 12.5, unit: 4, area: 'AoS 2 / Outcome 2', description: 'Analysis of historical interpretations or primary sources on consequences.' },
+      { id: 'hi2-exam', name: 'End-of-Year Exam', type: 'Exam', weight: 50, unit: '3 & 4', area: 'All Outcomes', description: '2 hours + 15 min reading. Section A: Source-based questions (50 marks). Section B: Essays (50 marks).' }
+    ]
+  }
+];
+
+// ============================================================
+// STATE: App state management with localStorage
+// ============================================================
+const STORAGE_KEY = 'jamesVCEStudyMaster';
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) return JSON.parse(saved);
+  } catch (e) { console.error('Failed to load state', e); }
+  return {};
+}
+
+function saveState(state) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (e) { console.error('Failed to save state', e); }
+}
+
+function getAssessmentData(assessmentId) {
+  const state = loadState();
+  return state[assessmentId] || {};
+}
+
+function setAssessmentData(assessmentId, data) {
+  const state = loadState();
+  state[assessmentId] = { ...(state[assessmentId] || {}), ...data };
+  saveState(state);
+}
+
+function getCustomSubjects() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY + '_subjects');
+    if (saved) return JSON.parse(saved);
+  } catch (e) {}
+  return null;
+}
+
+function saveCustomSubjects(subjects) {
+  localStorage.setItem(STORAGE_KEY + '_subjects', JSON.stringify(subjects));
+}
+
+function getSubjects() {
+  return getCustomSubjects() || JSON.parse(JSON.stringify(DEFAULT_SUBJECTS));
+}
+
+// ============================================================
+// APP
+// ============================================================
+let currentView = 'dashboard';
+let expandedSubjects = {};
+let currentSemester = 's1-2026';
+
+const SEMESTERS = [
+  {
+    id: 's1-2026',
+    label: 'Sem 1 · 2026',
+    year: 11,
+    filterUnit: 1, // Unit 1 for standard subjects
+    subjects: ['yr11-methods', 'yr11-specialist', 'yr11-english', 'yr11-physics', 'yr11-history', 'yr11-music'],
+    musicUnit: 3, // Music Inquiry does Unit 3 in Sem 1
+    description: 'Year 11 — Unit 1 (Music Inquiry Unit 3)'
+  },
+  {
+    id: 's2-2026',
+    label: 'Sem 2 · 2026',
+    year: 11,
+    filterUnit: 2,
+    subjects: ['yr11-methods', 'yr11-specialist', 'yr11-english', 'yr11-physics', 'yr11-history', 'yr11-music'],
+    musicUnit: 4,
+    description: 'Year 11 — Unit 2 (Music Inquiry Unit 4)'
+  },
+  {
+    id: 's1-2027',
+    label: 'Sem 1 · 2027',
+    year: 12,
+    filterUnit: 3,
+    subjects: ['yr12-english', 'yr12-methods', 'yr12-specialist', 'yr12-physics', 'yr12-history'],
+    description: 'Year 12 — Unit 3'
+  },
+  {
+    id: 's2-2027',
+    label: 'Sem 2 · 2027',
+    year: 12,
+    filterUnit: 4,
+    subjects: ['yr12-english', 'yr12-methods', 'yr12-specialist', 'yr12-physics', 'yr12-history'],
+    description: 'Year 12 — Unit 4 & Exams'
+  }
+];
+
+// ============================================================
+// DARK MODE
+// ============================================================
+const DARK_MODE_KEY = 'jamesVCEStudyMaster_darkMode';
+
+function generateTouchIcon() {
+  const c = document.createElement('canvas');
+  c.width = 180; c.height = 180;
+  const ctx = c.getContext('2d');
+  const g = ctx.createLinearGradient(0, 0, 180, 180);
+  g.addColorStop(0, '#1a365d');
+  g.addColorStop(0.5, '#6366f1');
+  g.addColorStop(1, '#8b5cf6');
+  ctx.fillStyle = g;
+  ctx.beginPath();
+  ctx.roundRect(0, 0, 180, 180, 36);
+  ctx.fill();
+  // Graduation cap
+  ctx.fillStyle = 'white';
+  ctx.beginPath();
+  ctx.moveTo(90, 36);
+  ctx.lineTo(160, 68);
+  ctx.lineTo(90, 96);
+  ctx.lineTo(20, 68);
+  ctx.closePath();
+  ctx.fill();
+  // Tassel post
+  ctx.fillStyle = 'white';
+  ctx.beginPath();
+  ctx.roundRect(84, 68, 12, 52, 3);
+  ctx.fill();
+  // Cap body curve
+  ctx.strokeStyle = 'white';
+  ctx.lineWidth = 6;
+  ctx.beginPath();
+  ctx.moveTo(48, 80);
+  ctx.lineTo(48, 110);
+  ctx.quadraticCurveTo(90, 138, 132, 110);
+  ctx.lineTo(132, 80);
+  ctx.stroke();
+  // Tassel ball
+  ctx.fillStyle = '#fbbf24';
+  ctx.beginPath();
+  ctx.arc(90, 128, 8, 0, Math.PI * 2);
+  ctx.fill();
+  // Tassel string
+  ctx.strokeStyle = '#fbbf24';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(90, 128);
+  ctx.quadraticCurveTo(105, 140, 110, 152);
+  ctx.stroke();
+  const link = document.createElement('link');
+  link.rel = 'apple-touch-icon';
+  link.href = c.toDataURL('image/png');
+  document.head.appendChild(link);
+}
+
+function initDarkMode() {
+  generateTouchIcon();
+  const saved = localStorage.getItem(DARK_MODE_KEY);
+  if (saved === 'true') {
+    document.documentElement.classList.add('dark');
+  }
+  updateThemeToggleIcon();
+}
+
+function toggleDarkMode() {
+  document.documentElement.classList.toggle('dark');
+  const isDark = document.documentElement.classList.contains('dark');
+  localStorage.setItem(DARK_MODE_KEY, isDark);
+  updateThemeToggleIcon();
+}
+
+function updateThemeToggleIcon() {
+  const btn = document.getElementById('themeToggle');
+  if (btn) {
+    const isDark = document.documentElement.classList.contains('dark');
+    btn.textContent = isDark ? '\u2600\uFE0F' : '\uD83C\uDF19';
+    btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+  }
+}
+
+function init() {
+  initDarkMode();
+  document.querySelectorAll('#nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentView = btn.dataset.view;
+      document.querySelectorAll('#nav button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    });
+  });
+  render();
+}
+
+function render() {
+  const app = document.getElementById('app');
+  switch (currentView) {
+    case 'dashboard': app.innerHTML = renderDashboard(); break;
+    case 'year11': app.innerHTML = renderYear(11); break;
+    case 'year12': app.innerHTML = renderYear(12); break;
+    case 'study': app.innerHTML = renderStudyZone(); break;
+    case 'uni': app.innerHTML = renderUniCareers(); break;
+    case 'settings': app.innerHTML = renderSettings(); break;
+  }
+  attachEventListeners();
+}
+
+// ============================================================
+// DASHBOARD
+// ============================================================
+function switchSemester(semId) {
+  currentSemester = semId;
+  render();
+}
+
+function getSemesterSubjects(semester) {
+  const allSubjects = getSubjects();
+  return allSubjects.filter(sub => semester.subjects.includes(sub.id));
+}
+
+function getSemesterAssessments(subject, semester) {
+  const isMusic = subject.id === 'yr11-music';
+  const targetUnit = isMusic ? semester.musicUnit : semester.filterUnit;
+  // For Music Inquiry assessments that span "3 & 4", include in both semesters
+  return subject.assessments.filter(a => {
+    if (a.unit === targetUnit) return true;
+    if (isMusic && a.unit === '3 & 4') return true;
+    // Include semester exams that cover "All Unit X"
+    return false;
+  });
+}
+
+function renderDashboard() {
+  const semester = SEMESTERS.find(s => s.id === currentSemester);
+  const semSubjects = getSemesterSubjects(semester);
+  const state = loadState();
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  // Gather assessments for this semester only
+  const allAssessments = [];
+  const totalAssessments = { total: 0, withDates: 0, withResults: 0 };
+
+  semSubjects.forEach(sub => {
+    const semAssessments = getSemesterAssessments(sub, semester);
+    semAssessments.forEach(a => {
+      totalAssessments.total++;
+      const data = state[a.id] || {};
+      if (data.date) totalAssessments.withDates++;
+      if (data.result !== undefined && data.result !== null && data.result !== '') totalAssessments.withResults++;
+      if (data.date) {
+        const d = new Date(data.date + 'T00:00:00');
+        const daysAway = Math.ceil((d - today) / (1000*60*60*24));
+        allAssessments.push({
+          ...a,
+          subject: sub,
+          date: d,
+          daysAway,
+          result: data.result,
+          resultTotal: data.resultTotal
+        });
+      }
+    });
+  });
+
+  allAssessments.sort((a, b) => a.date - b.date);
+
+  const upcoming = allAssessments.filter(a => a.daysAway >= 0 && a.daysAway <= 28 && (a.result === undefined || a.result === null || a.result === ''));
+  const urgent = upcoming.filter(a => a.daysAway <= 7);
+  const soon = upcoming.filter(a => a.daysAway > 7 && a.daysAway <= 14);
+  const horizon = upcoming.filter(a => a.daysAway > 14);
+  const overdue = allAssessments.filter(a => a.daysAway < 0 && (a.result === undefined || a.result === null || a.result === ''));
+
+  let html = '';
+
+  // Hero section
+  const heroMessages = {
+    's1-2026': { title: 'Semester 1, let\u2019s go James.', sub: `${semSubjects.length} subjects this semester. Let\u2019s get after it.` },
+    's2-2026': { title: 'Keep the momentum going, James.', sub: `Semester 2 \u2014 ${semSubjects.length} subjects, deeper content. You\u2019ve got this.` },
+    's1-2027': { title: 'Year 12. This is your year, James.', sub: `${semSubjects.length} subjects, Units 3 & 4. Everything counts towards your ATAR now.` },
+    's2-2027': { title: 'The home stretch, James.', sub: `Final semester. ${semSubjects.length} subjects heading into exams. Finish strong.` }
+  };
+  const heroMsg = heroMessages[semester.id];
+
+  html += '<div class="hero">';
+  html += `<div class="hero-title">\u{1F680} <span style="background:linear-gradient(90deg,#fff,#c4b5fd,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">${heroMsg.title}</span></div>`;
+  html += `<div class="hero-subtitle">${heroMsg.sub}</div>`;
+  html += '<div class="hero-subjects">';
+  semSubjects.forEach(sub => {
+    html += `<span class="hero-chip">${sub.icon} ${sub.name.replace('Mathematical ', '').replace('History: ', '').replace(' Inquiry', '')}</span>`;
+  });
+  html += '</div></div>';
+
+  // Semester selector
+  html += '<div class="semester-label">Semester</div>';
+  html += '<div class="semester-selector">';
+  SEMESTERS.forEach(s => {
+    html += `<button class="semester-btn${s.id === currentSemester ? ' active' : ''}" onclick="switchSemester('${s.id}')">${s.label}</button>`;
+  });
+  html += '</div>';
+
+  // Stats row
+  html += '<div class="stat-row">';
+  html += `<div class="stat-card"><div class="stat-number" style="color:${urgent.length > 0 ? 'var(--danger)' : 'var(--success)'}">${urgent.length}</div><div class="stat-label">Due This Week</div></div>`;
+  html += `<div class="stat-card"><div class="stat-number" style="color:var(--warning)">${soon.length}</div><div class="stat-label">Due Next Week</div></div>`;
+  html += `<div class="stat-card"><div class="stat-number" style="color:var(--accent)">${upcoming.length}</div><div class="stat-label">Next 4 Weeks</div></div>`;
+  html += `<div class="stat-card"><div class="stat-number">${totalAssessments.withResults}/${totalAssessments.total}</div><div class="stat-label">Results Entered</div></div>`;
+  html += '</div>';
+
+  html += '<div class="dashboard-grid">';
+
+  // Overdue
+  if (overdue.length > 0) {
+    html += '<div class="card full-width" style="border-left: 4px solid var(--danger);">';
+    html += '<div class="section-title">\u26A0\uFE0F Overdue / Missing Results</div>';
+    overdue.forEach(a => {
+      html += renderTimelineItem(a, 'overdue');
+    });
+    html += '</div>';
+  }
+
+  // Upcoming timeline
+  html += '<div class="card">';
+  html += '<div class="section-title">Upcoming Assessments</div>';
+  if (upcoming.length === 0) {
+    if (totalAssessments.withDates === 0) {
+      html += '<div class="empty-state"><div class="empty-state-icon">\u{1F4C5}</div><div class="empty-state-text">No dates set yet. Go to each subject and add your assessment dates to see them here.</div></div>';
+    } else {
+      html += '<div class="empty-state"><div class="empty-state-icon">\u2705</div><div class="empty-state-text">Nothing due in the next 4 weeks!</div></div>';
+    }
+  } else {
+    if (urgent.length > 0) {
+      html += '<div style="font-weight:600;color:var(--danger);margin-bottom:0.5rem;font-size:0.85rem;">THIS WEEK</div>';
+      urgent.forEach(a => { html += renderTimelineItem(a, 'urgent'); });
+    }
+    if (soon.length > 0) {
+      html += '<div style="font-weight:600;color:var(--warning);margin:0.75rem 0 0.5rem;font-size:0.85rem;">NEXT WEEK</div>';
+      soon.forEach(a => { html += renderTimelineItem(a, 'soon'); });
+    }
+    if (horizon.length > 0) {
+      html += '<div style="font-weight:600;color:var(--success);margin:0.75rem 0 0.5rem;font-size:0.85rem;">COMING UP</div>';
+      horizon.forEach(a => { html += renderTimelineItem(a, 'upcoming'); });
+    }
+  }
+  html += '</div>';
+
+  // Subject progress — only this semester's subjects and assessments
+  html += '<div class="card">';
+  html += `<div class="section-title">Subject Progress — ${semester.description}</div>`;
+  semSubjects.forEach(sub => {
+    const semAssessments = getSemesterAssessments(sub, semester);
+    const total = semAssessments.length;
+    const done = semAssessments.filter(a => {
+      const d = state[a.id];
+      return d && d.result !== undefined && d.result !== null && d.result !== '';
+    }).length;
+    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
+    // Weighted average for semester assessments only
+    const semWeight = semAssessments.reduce((sum, a) => sum + a.weight, 0);
+    let wavg = null;
+    if (semWeight > 0) {
+      let earned = 0, possible = 0;
+      semAssessments.forEach(a => {
+        const d = state[a.id];
+        if (d && d.result !== undefined && d.result !== null && d.result !== '') {
+          const total = d.resultTotal || 100;
+          earned += (d.result / total) * a.weight;
+          possible += a.weight;
+        }
+      });
+      if (possible > 0) wavg = Math.round((earned / possible) * 100);
+    }
+
+    html += '<div class="subject-progress-row">';
+    html += `<div class="subject-progress-dot" style="background:${sub.color}"></div>`;
+    html += `<div class="subject-progress-name">${sub.name}</div>`;
+    html += '<div class="progress-ring" style="flex:1">';
+    html += `<div class="progress-bar-horiz"><div class="progress-bar-fill" style="width:${pct}%;background:${sub.color}"></div></div>`;
+    html += '</div>';
+    html += `<div class="subject-progress-stats">${done}/${total}`;
+    if (wavg !== null) html += `<br><span style="font-weight:700;color:${sub.color}">${wavg}%</span>`;
+    html += '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+
+  html += '</div>'; // dashboard-grid
+
+  return html;
+}
+
+function renderTimelineItem(a, urgency) {
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const badgeClass = urgency === 'urgent' ? 'badge-urgent' : urgency === 'soon' ? 'badge-soon' : urgency === 'overdue' ? 'badge-urgent' : 'badge-upcoming';
+  let countdownText = '';
+  if (a.daysAway === 0) countdownText = 'TODAY';
+  else if (a.daysAway === 1) countdownText = 'Tomorrow';
+  else if (a.daysAway < 0) countdownText = `${Math.abs(a.daysAway)} days ago`;
+  else countdownText = `In ${a.daysAway} days`;
+
+  return `<div class="timeline-item">
+    <div class="timeline-date">
+      <div class="timeline-day">${a.date.getDate()}</div>
+      <div class="timeline-month">${months[a.date.getMonth()]}</div>
+      <div style="font-size:0.65rem;color:var(--text-muted)">${days[a.date.getDay()]}</div>
+    </div>
+    <div class="timeline-content">
+      <div class="timeline-title">${a.name}</div>
+      <div class="timeline-sub">
+        <span class="badge badge-subject" style="background:${a.subject.color}">${a.subject.year === 12 ? 'Yr12 ' : ''}${a.subject.name}</span>
+        <span class="badge badge-weight" style="margin-left:0.25rem">${a.weight}%</span>
+      </div>
+    </div>
+    <div class="timeline-countdown" style="color:${urgency === 'urgent' || urgency === 'overdue' ? 'var(--danger)' : urgency === 'soon' ? 'var(--warning)' : 'var(--success)'}">
+      <span class="badge ${badgeClass}">${countdownText}</span>
+    </div>
+  </div>`;
+}
+
+// ============================================================
+// YEAR VIEW
+// ============================================================
+function renderYear(year) {
+  const subjects = getSubjects().filter(s => s.year === year);
+  let html = `<div class="section-title">${year === 12 ? '\u{1F393}' : '\u{1F4DA}'} Year ${year} Subjects</div>`;
+
+  if (year === 12) {
+    html += '<div class="info-box">Year 12 subjects contribute directly to the ATAR. Weightings shown are set by VCAA and cannot be changed by the school.</div>';
+    html += renderScalingSection();
+    html += renderATARExplanation();
+  } else {
+    html += '<div class="info-box warning">Year 11 weightings shown below are <strong>typical estimates</strong>. Please update them to match the actual Warranwood Rudolf Steiner assessment outline for each subject. Music Inquiry (Units 3&amp;4) uses VCAA-mandated scored assessment weightings.</div>';
+  }
+
+  subjects.forEach(sub => {
+    html += renderSubjectCard(sub);
+  });
+
+  return html;
+}
+
+// Scaling interpolation
+// Approximate aggregate-to-ATAR conversion (based on recent Victorian ATAR distributions)
+const ATAR_TABLE = [
+  { aggregate: 210, atar: 99.95 },
+  { aggregate: 200, atar: 99.50 },
+  { aggregate: 190, atar: 98.00 },
+  { aggregate: 180, atar: 95.50 },
+  { aggregate: 170, atar: 92.00 },
+  { aggregate: 160, atar: 87.00 },
+  { aggregate: 150, atar: 82.00 },
+  { aggregate: 140, atar: 76.00 },
+  { aggregate: 130, atar: 69.00 },
+  { aggregate: 120, atar: 61.00 },
+  { aggregate: 110, atar: 53.00 },
+  { aggregate: 100, atar: 45.00 },
+  { aggregate: 90, atar: 37.00 },
+  { aggregate: 80, atar: 30.00 }
+];
+
+function estimateATAR(aggregate) {
+  if (aggregate >= 210) return 99.95;
+  if (aggregate <= 80) return 30.00;
+  for (let i = 0; i < ATAR_TABLE.length - 1; i++) {
+    const upper = ATAR_TABLE[i];
+    const lower = ATAR_TABLE[i + 1];
+    if (aggregate >= lower.aggregate && aggregate <= upper.aggregate) {
+      const t = (aggregate - lower.aggregate) / (upper.aggregate - lower.aggregate);
+      return Math.round((lower.atar + t * (upper.atar - lower.atar)) * 100) / 100;
+    }
+  }
+  return 30;
+}
+
+const SCALING_POINTS = [
+  { name: 'Specialist Mathematics', color: '#059669', points: {20:25, 25:32, 30:40, 35:47, 40:50, 45:50, 50:50} },
+  { name: 'Mathematical Methods', color: '#6366f1', points: {20:22, 25:28, 30:35, 35:41, 40:46, 45:50, 50:50} },
+  { name: 'Physics', color: '#d97706', points: {20:21, 25:27, 30:34, 35:40, 40:45, 45:49, 50:50} },
+  { name: 'History: Revolutions', color: '#8b5cf6', points: {20:19, 25:24, 30:30, 35:36, 40:42, 45:47, 50:50} },
+  { name: 'Music Inquiry', color: '#e11d48', points: {20:18, 25:23, 30:29, 35:35, 40:41, 45:46, 50:50} },
+  { name: 'English', color: '#dc2626', points: {20:17, 25:22, 30:28, 35:33, 40:39, 45:44, 50:50} }
+];
+
+function interpolateScale(points, raw) {
+  const keys = Object.keys(points).map(Number).sort((a,b) => a - b);
+  if (raw <= keys[0]) return points[keys[0]];
+  if (raw >= keys[keys.length-1]) return points[keys[keys.length-1]];
+  for (let i = 0; i < keys.length - 1; i++) {
+    if (raw >= keys[i] && raw <= keys[i+1]) {
+      const t = (raw - keys[i]) / (keys[i+1] - keys[i]);
+      return Math.round(points[keys[i]] + t * (points[keys[i+1]] - points[keys[i]]));
+    }
+  }
+  return raw;
+}
+
+function renderScalingSection() {
+  let html = '<div class="card">';
+  html += '<div class="section-title">\u{1F4CA} Interactive ATAR Scaling Calculator (2025 VTAC Data)</div>';
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Drag the slider to see how a raw study score scales for each of James\u2019s subjects. Scaling adjusts scores based on cohort strength \u2014 above 30 = scales up, below 30 = scales down.</p>';
+
+  html += '<div class="scaling-slider-container">';
+  html += '<span style="font-size:0.8rem;font-weight:600;">Raw Score:</span>';
+  html += '<input type="range" class="scaling-slider" id="scalingSlider" min="20" max="50" value="35" oninput="updateScaling(this.value)">';
+  html += '<div class="scaling-score-display" id="scalingDisplay">35</div>';
+  html += '</div>';
+
+  html += '<div id="scalingResults" style="overflow-x:auto;">';
+  html += renderScalingResults(35);
+  html += '</div>';
+
+  html += '</div>';
+  return html;
+}
+
+function renderScalingResults(raw) {
+  let html = '<table class="assessment-table"><thead><tr>';
+  html += '<th>Subject</th><th>Raw</th><th>Scaled</th><th>Change</th><th style="width:40%">Visual</th>';
+  html += '</tr></thead><tbody>';
+
+  const results = [];
+  SCALING_POINTS.forEach(s => {
+    const scaled = interpolateScale(s.points, raw);
+    const diff = scaled - raw;
+    results.push({ ...s, raw, scaled, diff });
+  });
+
+  results.sort((a, b) => b.scaled - a.scaled);
+
+  results.forEach(s => {
+    const diffStr = s.diff > 0 ? '+' + s.diff : s.diff === 0 ? '0' : '' + s.diff;
+    const diffColor = s.diff > 0 ? 'var(--success)' : s.diff < 0 ? 'var(--danger)' : 'var(--warning)';
+    const barPct = Math.min((s.scaled / 50) * 100, 100);
+    html += '<tr>';
+    html += `<td><strong style="color:${s.color}">${s.name}</strong></td>`;
+    html += `<td>${s.raw}</td>`;
+    html += `<td style="font-weight:700;font-size:1.1rem;">${s.scaled}</td>`;
+    html += `<td style="font-weight:700;color:${diffColor}">${diffStr}</td>`;
+    html += `<td><div style="height:20px;background:var(--border);border-radius:4px;overflow:hidden;position:relative;">`;
+    html += `<div style="position:absolute;left:${(raw/50)*100}%;top:0;bottom:0;width:2px;background:#a0aec0;z-index:2;"></div>`;
+    html += `<div style="height:100%;width:${barPct}%;background:${s.color};border-radius:4px;opacity:0.7;transition:width 0.2s;"></div>`;
+    html += `</div></td>`;
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+
+  // ATAR aggregate estimate
+  const sorted = results.sort((a, b) => b.scaled - a.scaled);
+  const english = sorted.find(s => s.name === 'English');
+  const others = sorted.filter(s => s.name !== 'English');
+  const top3 = others.slice(0, 3);
+  const fifth = others[3] || { scaled: 0 };
+  const sixth = others[4] || { scaled: 0 };
+  const aggregate = english.scaled + top3.reduce((sum, s) => sum + s.scaled, 0) + (fifth.scaled * 0.1) + (sixth.scaled * 0.1);
+
+  const atarEstimate = estimateATAR(aggregate);
+  const atarColor = atarEstimate >= 90 ? 'var(--success)' : atarEstimate >= 75 ? 'var(--accent)' : atarEstimate >= 60 ? 'var(--warning)' : 'var(--danger)';
+
+  html += `<div style="margin-top:1rem;padding:1rem;background:linear-gradient(135deg,var(--info-bg),var(--success-bg));border-radius:10px;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">`;
+  html += `<div><div style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;">Estimated Aggregate</div>`;
+  html += `<div style="font-size:2rem;font-weight:800;color:var(--primary);">${aggregate.toFixed(1)}</div></div>`;
+  html += `<div style="flex-shrink:0;text-align:center;padding:0 1rem;border-left:2px solid var(--border);"><div style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;">Estimated ATAR</div>`;
+  html += `<div style="font-size:2rem;font-weight:800;color:${atarColor};">${atarEstimate.toFixed(2)}</div></div>`;
+  html += `<div style="font-size:0.8rem;color:var(--text-muted);flex:1;">= ${english.scaled} (English) + ${top3.map(s => s.scaled).join(' + ')} (best 3) + ${(fifth.scaled * 0.1).toFixed(1)} (5th\u00D710%) + ${(sixth.scaled * 0.1).toFixed(1)} (6th\u00D710%)</div>`;
+  html += `</div>`;
+
+  html += `<div style="margin-top:0.5rem;font-size:0.75rem;color:var(--text-muted);font-style:italic;">ATAR estimate is approximate, based on recent Victorian ATAR distribution data. Actual ATARs depend on the full state-wide cohort results.</div>`;
+
+  return html;
+}
+
+function updateScaling(val) {
+  document.getElementById('scalingDisplay').textContent = val;
+  document.getElementById('scalingResults').innerHTML = renderScalingResults(parseInt(val));
+}
+
+function renderATARExplanation() {
+  let html = '<div class="card">';
+  html += '<div class="section-title">\u{1F9EE} How James\u2019s ATAR Will Be Calculated</div>';
+
+  html += '<p style="font-size:0.9rem;margin-bottom:1rem;">James will complete <strong>6 VCE subjects</strong> with scored Units 3&4 assessment. The ATAR uses a formula called the <strong>aggregate</strong>, which takes the best results from these studies:</p>';
+
+  html += '<div class="info-box" style="margin-bottom:1rem;">';
+  html += '<strong>ATAR Aggregate = English + next best 3 primary subjects + 10% of 5th study + 10% of 6th study</strong>';
+  html += '</div>';
+
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;"><strong>The rules:</strong></p>';
+  html += '<ul style="font-size:0.85rem;color:var(--text-muted);margin-left:1.25rem;margin-bottom:1rem;">';
+  html += '<li style="margin-bottom:0.35rem;"><strong>English is compulsory</strong> \u2014 it always counts as one of the primary four (even if it\u2019s not the highest score).</li>';
+  html += '<li style="margin-bottom:0.35rem;"><strong>Best 3 of the remaining 5</strong> subjects fill the other primary spots (scaled scores used).</li>';
+  html += '<li style="margin-bottom:0.35rem;">The <strong>5th and 6th best</strong> scaled scores each contribute only <strong>10%</strong> of their value to the aggregate.</li>';
+  html += '<li style="margin-bottom:0.35rem;">The aggregate (max ~209.5) is then converted to an ATAR percentile rank (0\u201399.95).</li>';
+  html += '</ul>';
+
+  html += '<p style="font-size:0.9rem;font-weight:600;margin-bottom:0.5rem;">Example using James\u2019s subjects:</p>';
+  html += '<div style="overflow-x:auto;">';
+  html += '<table class="assessment-table"><thead><tr>';
+  html += '<th>Subject</th><th>Raw Score</th><th>Scaled Score</th><th>Role in ATAR</th><th>Contributes</th>';
+  html += '</tr></thead><tbody>';
+
+  const example = [
+    { name: 'Specialist Maths', raw: 35, scaled: 47, role: 'Primary (Best)', contrib: 47, color: '#059669' },
+    { name: 'Maths Methods', raw: 35, scaled: 41, role: 'Primary', contrib: 41, color: '#6366f1' },
+    { name: 'Physics', raw: 35, scaled: 40, role: 'Primary', contrib: 40, color: '#d97706' },
+    { name: 'English', raw: 35, scaled: 33, role: 'Primary (compulsory)', contrib: 33, color: '#dc2626' },
+    { name: 'History: Revolutions', raw: 35, scaled: 36, role: '5th study (10%)', contrib: 3.6, color: '#8b5cf6' },
+    { name: 'Music Inquiry', raw: 35, scaled: 35, role: '6th study (10%)', contrib: 3.5, color: '#e11d48' }
+  ];
+
+  let totalContrib = 0;
+  example.forEach(s => {
+    totalContrib += s.contrib;
+    html += `<tr>`;
+    html += `<td><strong style="color:${s.color}">${s.name}</strong></td>`;
+    html += `<td>${s.raw}</td>`;
+    html += `<td style="font-weight:600">${s.scaled}</td>`;
+    html += `<td style="font-size:0.8rem">${s.role}</td>`;
+    html += `<td style="font-weight:700">${s.contrib}</td>`;
+    html += `</tr>`;
+  });
+
+  html += `<tr style="background:var(--success-bg);"><td colspan="4" style="font-weight:700;">Total Aggregate</td><td style="font-weight:700;font-size:1.1rem;">${totalContrib.toFixed(1)}</td></tr>`;
+  html += '</tbody></table></div>';
+
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);margin-top:0.75rem;"><em>In this example, if James scored a raw 35 in every subject, his aggregate would be ' + totalContrib.toFixed(1) + '. The 5th and 6th subjects (History: Revolutions and Music Inquiry) add only 10% of their scaled score each \u2014 so their contribution is small but still helpful. The maximum possible aggregate is approximately 209.5.</em></p>';
+
+  html += '<div class="info-box" style="margin-top:0.75rem;"><strong>Key takeaway:</strong> Specialist Mathematics is the highest-scaling VCE subject, and Methods also scales extremely well. Together, double maths gives James a massive ATAR advantage. Physics also scales strongly. Every extra mark in these subjects is worth more than in any other. English, while compulsory, is still important as it always counts in the primary four.</div>';
+
+  html += '</div>';
+  return html;
+}
+
+function renderSubjectCard(sub) {
+  const state = loadState();
+  const isOpen = expandedSubjects[sub.id];
+  const totalAssess = sub.assessments.length;
+  const completedAssess = sub.assessments.filter(a => {
+    const d = state[a.id];
+    return d && d.result !== undefined && d.result !== null && d.result !== '';
+  }).length;
+  const wavg = calcWeightedAvg(sub, state);
+
+  let html = `<div class="card" style="padding:0;border-left:4px solid ${sub.color};">`;
+
+  // Header
+  html += `<div class="subject-header" onclick="toggleSubject('${sub.id}')">`;
+  html += `<div style="display:flex;align-items:center;flex:1">`;
+  html += `<div class="subject-icon" style="background:${sub.color}">${sub.icon}</div>`;
+  html += `<div class="subject-info">`;
+  html += `<div class="subject-name">${sub.name}</div>`;
+  html += `<div class="subject-subtitle">${sub.units} \u2022 ${completedAssess}/${totalAssess} results entered${wavg !== null ? ' \u2022 Avg: ' + wavg + '%' : ''}</div>`;
+  html += `</div></div>`;
+  html += `<div class="subject-chevron ${isOpen ? 'open' : ''}">\u25B6</div>`;
+  html += `</div>`;
+
+  // Body
+  html += `<div class="subject-body ${isOpen ? 'open' : ''}" id="subject-body-${sub.id}">`;
+
+  // Description & notes
+  html += `<p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:0.5rem;">${sub.description}</p>`;
+  if (sub.notes) {
+    html += `<div class="info-box">${sub.notes}</div>`;
+  }
+
+  // Weighted average
+  if (wavg !== null) {
+    html += `<div class="weighted-avg"><div class="weighted-avg-number">${wavg}%</div><div class="weighted-avg-label">Weighted Average<br>(based on ${completedAssess} result${completedAssess === 1 ? '' : 's'} entered)</div></div>`;
+    html += '<div style="height:0.75rem"></div>';
+  }
+
+  // Visual weight breakdown
+  html += '<div style="margin-bottom:1rem">';
+  html += '<div style="font-weight:600;font-size:0.85rem;margin-bottom:0.5rem;">Assessment Weight Breakdown</div>';
+  html += '<div style="display:flex;height:24px;border-radius:6px;overflow:hidden;gap:1px;">';
+  sub.assessments.forEach(a => {
+    html += `<div style="flex:${a.weight};background:${sub.color};opacity:${0.4 + (a.weight / 100) * 1.2};display:flex;align-items:center;justify-content:center;color:white;font-size:0.65rem;font-weight:600;min-width:${a.weight > 5 ? '30px' : '15px'}" title="${a.name}: ${a.weight}%">${a.weight > 7 ? a.weight + '%' : ''}</div>`;
+  });
+  html += '</div>';
+  html += '<div style="display:flex;gap:1px;margin-top:2px;">';
+  sub.assessments.forEach(a => {
+    html += `<div style="flex:${a.weight};font-size:0.6rem;color:var(--text-muted);text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" title="${a.name}">${a.weight > 10 ? a.type : ''}</div>`;
+  });
+  html += '</div></div>';
+
+  // Assessment table
+  html += '<div style="overflow-x:auto;">';
+  html += '<table class="assessment-table">';
+  html += '<thead><tr>';
+  html += '<th>Assessment</th>';
+  html += '<th>Type</th>';
+  html += '<th>Weight</th>';
+  html += '<th>Date</th>';
+  html += '<th style="min-width:120px">Result</th>';
+  html += '<th class="hide-mobile">Notes</th>';
+  html += '</tr></thead><tbody>';
+
+  let currentUnit = null;
+  sub.assessments.forEach(a => {
+    const data = state[a.id] || {};
+    const unitLabel = 'Unit ' + a.unit;
+    if (a.unit !== currentUnit) {
+      currentUnit = a.unit;
+      html += `<tr><td colspan="6" style="background:var(--bg-subtle);font-weight:700;font-size:0.8rem;color:${sub.color};padding:0.5rem 0.75rem;text-transform:uppercase;letter-spacing:0.05em;">Unit ${a.unit}</td></tr>`;
+    }
+
+    const hasResult = data.result !== undefined && data.result !== null && data.result !== '';
+    html += `<tr>`;
+    html += `<td><div style="font-weight:600;">${a.name}</div><div style="font-size:0.75rem;color:var(--text-muted)">${a.area || ''}</div>`;
+    if (a.description) html += `<div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.15rem;font-style:italic" class="hide-mobile">${a.description}</div>`;
+    html += `</td>`;
+    html += `<td><span style="font-size:0.8rem;">${a.type}</span></td>`;
+    html += `<td><div class="weight-bar-container"><div class="weight-bar"><div class="weight-bar-fill" style="width:${Math.min(a.weight * 2, 100)}%;background:${sub.color}"></div></div><span class="weight-pct" style="color:${sub.color}">${a.weight}%</span></div></td>`;
+    html += `<td><input type="date" class="input-sm" value="${data.date || ''}" onchange="updateDate('${a.id}', this.value)"></td>`;
+    html += `<td><div style="display:flex;align-items:center;gap:0.25rem;">`;
+    html += `<input type="number" class="input-sm" placeholder="\u2014" min="0" value="${hasResult ? data.result : ''}" onchange="updateResult('${a.id}', this.value)" style="width:55px">`;
+    html += `<span style="color:var(--text-muted);font-size:0.85rem">/</span>`;
+    html += `<input type="number" class="input-sm" placeholder="100" min="1" value="${data.resultTotal || ''}" onchange="updateResultTotal('${a.id}', this.value)" style="width:55px">`;
+    if (hasResult && data.resultTotal) {
+      const pct = Math.round((parseFloat(data.result) / parseFloat(data.resultTotal)) * 100);
+      html += `<span style="font-weight:700;font-size:0.85rem;color:${pct >= 70 ? 'var(--success)' : pct >= 50 ? 'var(--warning)' : 'var(--danger)'};min-width:35px;text-align:right">${pct}%</span>`;
+    }
+    html += `</div></td>`;
+    html += `<td class="hide-mobile"><input type="text" class="input-sm" placeholder="Add notes\u2026" value="${data.notes || ''}" onchange="updateNotes('${a.id}', this.value)"></td>`;
+    html += `</tr>`;
+  });
+
+  html += '</tbody></table>';
+  html += '</div>';
+
+  // Add assessment button
+  html += `<div style="margin-top:0.75rem;display:flex;gap:0.5rem;">`;
+  html += `<button class="btn btn-secondary btn-sm" onclick="addAssessment('${sub.id}')">+ Add Assessment</button>`;
+  if (!sub.vcaaWeighted) {
+    html += `<button class="btn btn-secondary btn-sm" onclick="editWeights('${sub.id}')">Edit Weights</button>`;
+  }
+  html += `</div>`;
+
+  html += '</div>'; // subject-body
+  html += '</div>'; // card
+  return html;
+}
+
+// ============================================================
+// STUDY ZONE: Quiz Game + Resources
+// ============================================================
+const QUIZ_QUESTIONS = {
+  'yr11-specialist': [
+    { q: 'What is the sum of the first n terms of an arithmetic sequence?', opts: ['n(a + l)/2', 'a \u00D7 r\u207F', 'n \u00D7 d', 'a/(1 - r)'], ans: 0, topic: 'Sequences & Series', explain: 'S\u2099 = n(a + l)/2 where a is the first term and l is the last term. Equivalently, S\u2099 = n/2[2a + (n-1)d].' },
+    { q: 'What is a necessary condition for a geometric series to converge?', opts: ['r > 1', '|r| < 1', 'r = 1', 'r < 0'], ans: 1, topic: 'Sequences & Series', explain: 'An infinite geometric series converges only when the common ratio r satisfies |r| < 1. The sum is a/(1 - r).' },
+    { q: 'In a truth table, what is the result of P \u2227 Q when P is True and Q is False?', opts: ['True', 'False', 'Undefined', 'Neither'], ans: 1, topic: 'Logic', explain: 'The conjunction (AND) P \u2227 Q is True only when BOTH P and Q are True. If either is False, the result is False.' },
+    { q: 'What proof technique assumes the opposite of what you want to prove?', opts: ['Direct proof', 'Proof by induction', 'Proof by contradiction', 'Proof by exhaustion'], ans: 2, topic: 'Proof', explain: 'Proof by contradiction (reductio ad absurdum) assumes the negation of the statement is true, then derives a logical contradiction, proving the original statement must be true.' },
+    { q: 'What is the contrapositive of "If P then Q"?', opts: ['If Q then P', 'If not P then not Q', 'If not Q then not P', 'P and Q'], ans: 2, topic: 'Logic', explain: 'The contrapositive of P \u2192 Q is \u00ACQ \u2192 \u00ACP. A statement and its contrapositive are logically equivalent.' },
+    { q: 'In graph theory, what is the degree of a vertex?', opts: ['The number of edges in the graph', 'The number of edges connected to that vertex', 'The shortest path to another vertex', 'The total number of vertices'], ans: 1, topic: 'Graph Theory', explain: 'The degree of a vertex is the number of edges incident to it. A loop contributes 2 to the degree.' },
+    { q: 'According to Euler\u2019s theorem, a connected graph has an Euler circuit if and only if\u2026', opts: ['All vertices have odd degree', 'All vertices have even degree', 'It has exactly 2 odd-degree vertices', 'It is a complete graph'], ans: 1, topic: 'Graph Theory', explain: 'An Euler circuit (traversing every edge exactly once and returning to start) exists if and only if every vertex has even degree.' },
+    { q: 'How many ways can you arrange 5 distinct objects in a line?', opts: ['25', '120', '5', '10'], ans: 1, topic: 'Combinatorics', explain: '5! = 5 \u00D7 4 \u00D7 3 \u00D7 2 \u00D7 1 = 120. The number of permutations of n distinct objects is n!.' },
+    { q: 'What is C(6, 2)?', opts: ['12', '15', '30', '36'], ans: 1, topic: 'Combinatorics', explain: 'C(6,2) = 6!/(2! \u00D7 4!) = (6\u00D75)/(2\u00D71) = 15. This is the number of ways to choose 2 items from 6 without regard to order.' },
+    { q: 'What does mathematical induction prove?', opts: ['That a formula works for a specific case', 'That a statement is true for all natural numbers', 'That a conjecture is false', 'That two expressions are equivalent'], ans: 1, topic: 'Proof', explain: 'Mathematical induction proves a statement for all natural numbers by: (1) proving the base case, and (2) showing if it holds for n = k, it holds for n = k+1.' }
+  ],
+  'yr11-physics': [
+    { q: 'What is the SI unit of electric current?', opts: ['Volt', 'Ohm', 'Ampere', 'Watt'], ans: 2, topic: 'Electricity', explain: 'The ampere (A) measures electric current \u2014 the rate of flow of electric charge. 1 A = 1 coulomb per second.' },
+    { q: 'What does Ohm\u2019s law state?', opts: ['P = IV', 'V = IR', 'F = ma', 'E = mc\u00B2'], ans: 1, topic: 'Electricity', explain: 'Ohm\u2019s law: V = IR, where V is voltage (volts), I is current (amps), and R is resistance (ohms). Voltage is directly proportional to current for a constant resistance.' },
+    { q: 'What type of energy transfer occurs when a hot object is placed next to a cold one?', opts: ['Convection only', 'Conduction', 'Radiation only', 'No transfer occurs'], ans: 1, topic: 'Thermodynamics', explain: 'Conduction is heat transfer through direct contact. Energy transfers from the hot object to the cold object until thermal equilibrium is reached.' },
+    { q: 'What is specific heat capacity?', opts: ['The temperature at which a substance melts', 'The energy needed to raise 1 kg of a substance by 1\u00B0C', 'The total energy in a substance', 'The rate of heat loss'], ans: 1, topic: 'Thermodynamics', explain: 'Specific heat capacity (c) is the energy required to raise the temperature of 1 kg of a substance by 1\u00B0C (or 1 K). Q = mc\u0394T.' },
+    { q: 'In a series circuit, what happens to the total resistance as more resistors are added?', opts: ['It decreases', 'It stays the same', 'It increases', 'It depends on the voltage'], ans: 2, topic: 'Electricity', explain: 'In series, total resistance = R\u2081 + R\u2082 + R\u2083 + ... Each added resistor increases the total resistance.' },
+    { q: 'What is the frequency of a wave?', opts: ['The height of the wave', 'The speed of the wave', 'The number of complete cycles per second', 'The distance between two crests'], ans: 2, topic: 'Waves', explain: 'Frequency (f) is measured in hertz (Hz) and equals the number of complete wave cycles passing a point per second. f = 1/T where T is the period.' },
+    { q: 'Newton\u2019s second law states that F = ma. If the mass doubles and force stays the same, what happens to acceleration?', opts: ['It doubles', 'It halves', 'It stays the same', 'It quadruples'], ans: 1, topic: 'Motion', explain: 'From F = ma, if F is constant and m doubles, then a = F/m halves. Acceleration is inversely proportional to mass.' },
+    { q: 'What happens during nuclear fission?', opts: ['Two light nuclei combine', 'A heavy nucleus splits into smaller nuclei', 'Electrons are emitted', 'Neutrons are absorbed without reaction'], ans: 1, topic: 'Nuclear Physics', explain: 'Nuclear fission is the splitting of a heavy nucleus (e.g., uranium-235) into two or more lighter nuclei, releasing energy and neutrons.' },
+    { q: 'What is the relationship between wavelength and frequency?', opts: ['They are directly proportional', 'They are inversely proportional', 'They are unrelated', 'They are always equal'], ans: 1, topic: 'Waves', explain: 'v = f\u03BB. For a given wave speed, as frequency increases, wavelength decreases. They are inversely proportional.' },
+    { q: 'What is the law of conservation of energy?', opts: ['Energy can be created but not destroyed', 'Energy cannot be created or destroyed, only transformed', 'Energy is always lost as heat', 'Energy only exists in kinetic form'], ans: 1, topic: 'Motion', explain: 'The law of conservation of energy states that energy cannot be created or destroyed \u2014 it can only be transformed from one form to another. The total energy in an isolated system remains constant.' }
+  ],
+  'yr11-history': [
+    { q: 'What was the Cold War primarily a conflict between?', opts: ['Germany and France', 'The USA and USSR', 'Britain and China', 'Japan and Korea'], ans: 1, topic: 'Cold War', explain: 'The Cold War (c. 1947\u20131991) was a geopolitical rivalry between the USA (capitalism/democracy) and the USSR (communism). It was "cold" because the two superpowers never fought directly.' },
+    { q: 'What is "decolonisation"?', opts: ['The process of building new colonies', 'The process of colonies gaining independence from imperial powers', 'A military strategy', 'An economic policy'], ans: 1, topic: 'Decolonisation', explain: 'Decolonisation is the process by which colonies in Africa, Asia, and elsewhere gained independence from European imperial powers, primarily after World War II.' },
+    { q: 'Which ideology emphasises collective ownership of the means of production?', opts: ['Liberalism', 'Fascism', 'Communism', 'Conservatism'], ans: 2, topic: 'Ideology', explain: 'Communism, as theorised by Marx and Engels, advocates for collective (public) ownership of the means of production, abolition of private property, and a classless society.' },
+    { q: 'What was the significance of the Berlin Wall (1961\u20131989)?', opts: ['It protected West Berlin from floods', 'It symbolised the ideological division between East and West', 'It was a trade barrier', 'It was built by the United Nations'], ans: 1, topic: 'Cold War', explain: 'The Berlin Wall divided communist East Berlin from capitalist West Berlin. It became the most powerful symbol of the Iron Curtain and Cold War division. Its fall in 1989 signalled the end of the Cold War.' },
+    { q: 'What did the policy of "containment" aim to do?', opts: ['Spread communism globally', 'Prevent the spread of communism beyond its existing borders', 'Contain nuclear weapons', 'Limit immigration'], ans: 1, topic: 'Cold War', explain: 'Containment was a US foreign policy strategy aimed at preventing the spread of communism. It was articulated by George Kennan and became the basis of US Cold War policy (Truman Doctrine, Marshall Plan, NATO).' },
+    { q: 'What characterises fascism as an ideology?', opts: ['Democratic elections and civil liberties', 'Ultranationalism, authoritarianism, and suppression of opposition', 'International cooperation and free trade', 'Collective ownership of property'], ans: 1, topic: 'Ideology', explain: 'Fascism is characterised by ultranationalism, authoritarian leadership, militarism, suppression of political opposition, and the subordination of individual interests to the state.' },
+    { q: 'Which event is often considered the start of the Cold War?', opts: ['The assassination of Archduke Franz Ferdinand', 'The Truman Doctrine (1947)', 'The fall of the Berlin Wall', 'The signing of the Treaty of Versailles'], ans: 1, topic: 'Cold War', explain: 'The Truman Doctrine (1947) is often cited as marking the start of the Cold War. It pledged US support for countries resisting communist expansion, signalling a break with wartime cooperation with the USSR.' },
+    { q: 'What was the Non-Aligned Movement?', opts: ['A military alliance against the USSR', 'A group of nations that chose not to align with either the USA or USSR during the Cold War', 'A European trade bloc', 'A United Nations peacekeeping force'], ans: 1, topic: 'Decolonisation', explain: 'The Non-Aligned Movement (founded 1961) was a group of mostly newly independent nations that refused to formally align with either Cold War superpower, seeking an independent path in international politics.' },
+    { q: 'What was the Cuban Missile Crisis (1962)?', opts: ['A trade dispute between Cuba and the USA', 'A 13-day confrontation between the USA and USSR over Soviet missiles in Cuba', 'A civil war in Cuba', 'An invasion of Cuba by the USA'], ans: 1, topic: 'Conflict', explain: 'The Cuban Missile Crisis was a 13-day standoff when the US discovered Soviet nuclear missiles in Cuba. It was the closest the Cold War came to nuclear war. It was resolved when the USSR agreed to remove the missiles.' },
+    { q: 'What role did propaganda play in 20th-century ideological conflicts?', opts: ['It was only used by democratic nations', 'It was used by all sides to promote their ideology and demonise opponents', 'It had no significant impact', 'It was banned by international law'], ans: 1, topic: 'Ideology', explain: 'Propaganda was a key tool for all ideological movements \u2014 fascist, communist, and democratic. It used media, education, and art to shape public opinion, build loyalty, and justify policies.' }
+  ],
+  'yr11-methods': [
+    { q: 'What is the domain of a function?', opts: ['The set of all output values', 'The set of all input values', 'The y-intercept', 'The gradient'], ans: 1, topic: 'Functions', explain: 'The domain is all possible x-values (inputs) for which the function is defined. The range is all possible y-values (outputs).' },
+    { q: 'What is f(x) = x\u00B2 an example of?', opts: ['Linear function', 'Quadratic function', 'Exponential function', 'Logarithmic function'], ans: 1, topic: 'Functions', explain: 'A quadratic function has the form f(x) = ax\u00B2 + bx + c. Its graph is a parabola.' },
+    { q: 'If f(x) = 2x + 3, what is f(4)?', opts: ['8', '11', '14', '6'], ans: 1, topic: 'Functions', explain: 'Substitute x = 4: f(4) = 2(4) + 3 = 8 + 3 = 11' },
+    { q: 'What is the y-intercept of f(x) = 3x - 7?', opts: ['3', '-7', '7', '0'], ans: 1, topic: 'Linear Functions', explain: 'The y-intercept is found by setting x = 0: f(0) = 3(0) - 7 = -7. It\u2019s the constant term in y = mx + c.' },
+    { q: 'What transformation does f(x) + 3 represent?', opts: ['Shift right 3', 'Shift left 3', 'Shift up 3', 'Shift down 3'], ans: 2, topic: 'Transformations', explain: 'Adding a constant outside the function shifts the graph vertically. f(x) + 3 shifts UP 3 units.' },
+    { q: 'What transformation does f(x - 2) represent?', opts: ['Shift right 2', 'Shift left 2', 'Shift up 2', 'Shift down 2'], ans: 0, topic: 'Transformations', explain: 'f(x - 2) shifts the graph RIGHT by 2. It seems counterintuitive: replacing x with (x-2) moves the graph in the positive x direction.' },
+    { q: 'What is the discriminant of a quadratic equation ax\u00B2 + bx + c = 0?', opts: ['a + b + c', 'b\u00B2 - 4ac', '2a/b', 'a\u00B2 - bc'], ans: 1, topic: 'Algebra', explain: '\u0394 = b\u00B2 - 4ac. If \u0394 > 0: two real solutions. If \u0394 = 0: one repeated solution. If \u0394 < 0: no real solutions.' },
+    { q: 'Simplify: 2\u00B3 \u00D7 2\u2074', opts: ['2\u00B9\u00B2', '2\u2077', '4\u2077', '2\u00B9'], ans: 1, topic: 'Index Laws', explain: 'When multiplying powers with the same base, ADD the indices: 2\u00B3 \u00D7 2\u2074 = 2\u00B3\u207A\u2074 = 2\u2077 = 128' },
+    { q: 'What is the gradient of the line y = -3x + 5?', opts: ['5', '-3', '3', '-5'], ans: 1, topic: 'Linear Functions', explain: 'In y = mx + c form, m is the gradient (slope). Here m = -3, meaning the line goes down 3 for every 1 unit right.' },
+    { q: 'What does it mean if two lines are perpendicular?', opts: ['Same gradient', 'Gradients multiply to give -1', 'They never meet', 'They have the same y-intercept'], ans: 1, topic: 'Linear Functions', explain: 'Perpendicular lines meet at 90\u00B0. Their gradients are negative reciprocals: m\u2081 \u00D7 m\u2082 = -1. E.g., if m\u2081 = 2, then m\u2082 = -1/2.' },
+    { q: 'What is the axis of symmetry of y = x\u00B2 - 6x + 5?', opts: ['x = 3', 'x = -3', 'x = 6', 'x = 5'], ans: 0, topic: 'Quadratics', explain: 'Axis of symmetry: x = -b/(2a) = -(-6)/(2\u00D71) = 6/2 = 3. The vertex (turning point) lies on this line.' },
+    { q: 'An exponential function f(x) = 2\u02E3 always passes through which point?', opts: ['(0, 0)', '(1, 0)', '(0, 1)', '(0, 2)'], ans: 2, topic: 'Exponential Functions', explain: 'Any exponential function a\u02E3 (where a > 0) passes through (0, 1) because a\u2070 = 1 for any non-zero base.' },
+    { q: 'If P(A) = 0.3, what is P(not A)?', opts: ['0.3', '0.7', '0.1', '1.3'], ans: 1, topic: 'Probability', explain: 'Complementary events: P(not A) = 1 - P(A) = 1 - 0.3 = 0.7. The probabilities of all outcomes must sum to 1.' },
+    { q: 'What is the factored form of x\u00B2 - 9?', opts: ['(x-3)(x+3)', '(x-9)(x+1)', '(x-3)\u00B2', 'Cannot be factored'], ans: 0, topic: 'Algebra', explain: 'This is a difference of two squares: a\u00B2 - b\u00B2 = (a-b)(a+b). So x\u00B2 - 9 = x\u00B2 - 3\u00B2 = (x-3)(x+3).' },
+    { q: 'Solve: 2x + 5 = 17', opts: ['x = 6', 'x = 11', 'x = 7', 'x = 5'], ans: 0, topic: 'Algebra', explain: '2x + 5 = 17 \u2192 2x = 12 \u2192 x = 6. Always check: 2(6) + 5 = 17 \u2713' }
+  ]
+};
+
+const RESOURCES = {
+  'yr11-methods': [
+    { type: 'YouTube', title: 'Eddie Woo \u2014 Graphing Techniques', desc: 'Polynomials, exponentials, rational functions. Brilliant visual explanations.', url: 'https://www.youtube.com/@misterwootube', color: '#FF0000' },
+    { type: 'YouTube', title: 'Eddie Woo \u2014 Basic Algebra', desc: '3.5 hours of expanding, simplifying, substitution, factorising.', url: 'https://www.classcentral.com/course/youtube-basic-algebraic-techniques-91210', color: '#FF0000' },
+    { type: 'YouTube', title: 'Eddie Woo \u2014 Probability', desc: 'Introduction to probability, complementary events, Venn diagrams.', url: 'https://www.classcentral.com/course/youtube-basic-probability-91218', color: '#FF0000' },
+    { type: 'Website', title: 'Wootube Topic Browser', desc: 'Browse all Eddie Woo videos by topic \u2014 mapped to Australian curriculum.', url: 'https://wootube.mathspace.co/au', color: '#6366f1' }
+  ],
+  'yr11-specialist': [
+    { type: 'YouTube', title: 'Eddie Woo \u2014 Sequences & Series', desc: 'Arithmetic and geometric sequences, convergence, and applications. Clear visual explanations.', url: 'https://www.youtube.com/@misterwootube', color: '#FF0000' },
+    { type: 'YouTube', title: '3Blue1Brown \u2014 Essence of Linear Algebra', desc: 'Beautiful animated videos on vectors, matrices, and linear transformations. Builds deep intuition.', url: 'https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab', color: '#FF0000' },
+    { type: 'YouTube', title: '3Blue1Brown \u2014 Essence of Calculus', desc: 'Intuitive visual approach to calculus concepts. Outstanding for building understanding.', url: 'https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr', color: '#FF0000' },
+    { type: 'Website', title: 'CAS Calculator Guides', desc: 'Step-by-step guides for TI-Nspire and Casio ClassPad. Essential for exam technique.', url: 'https://www.vcaa.vic.edu.au/assessment/vce-assessment/past-examinations/Pages/Specialist-Mathematics.aspx', color: '#059669' },
+    { type: 'Website', title: 'Wootube Topic Browser', desc: 'Browse all Eddie Woo videos by topic \u2014 mapped to Australian curriculum. Great for proof and logic topics.', url: 'https://wootube.mathspace.co/au', color: '#059669' }
+  ],
+  'yr11-physics': [
+    { type: 'YouTube', title: 'Veritasium', desc: 'Engaging physics and science videos by Derek Muller. Covers electricity, motion, waves, and misconceptions.', url: 'https://www.youtube.com/@veritasium', color: '#FF0000' },
+    { type: 'YouTube', title: 'MinutePhysics', desc: 'Short, clear animations explaining physics concepts. Perfect for quick revision of key ideas.', url: 'https://www.youtube.com/@MinutePhysics', color: '#FF0000' },
+    { type: 'YouTube', title: 'Khan Academy Physics', desc: 'Comprehensive physics course: mechanics, thermodynamics, waves, electricity. Great for structured learning.', url: 'https://www.khanacademy.org/science/physics', color: '#FF0000' },
+    { type: 'YouTube', title: 'Physics Girl (Dianna Cowern)', desc: 'Fun, hands-on physics experiments and explanations. Waves, light, and electricity topics.', url: 'https://www.youtube.com/@physicsgirl', color: '#FF0000' },
+    { type: 'Website', title: 'Heinemann Physics Textbook Resources', desc: 'Online resources accompanying the Heinemann VCE Physics textbook series.', url: 'https://www.pearson.com.au/educator/secondary/science/physics', color: '#d97706' },
+    { type: 'Website', title: 'PhET Interactive Simulations', desc: 'Free interactive physics simulations from University of Colorado. Great for circuits, waves, and motion.', url: 'https://phet.colorado.edu/en/simulations/filter?subjects=physics', color: '#d97706' }
+  ],
+  'yr11-history': [
+    { type: 'YouTube', title: 'Crash Course World History', desc: 'Engaging overview of world history topics including ideologies, revolutions, and the modern world.', url: 'https://www.youtube.com/playlist?list=PLBDA2E52FB1EF80C9', color: '#FF0000' },
+    { type: 'YouTube', title: 'Crash Course European History', desc: 'Covers the French Revolution, Industrial Revolution, and modern European conflicts.', url: 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtMsMTfmRomkVQG8AqrAmJFX', color: '#FF0000' },
+    { type: 'Podcast', title: 'Revolutions by Mike Duncan', desc: 'Detailed podcast covering major revolutions in history. Essential listening for History: Revolutions.', url: 'https://thehistoryofrome.typepad.com/revolutions_podcast/', color: '#8B5CF6' },
+    { type: 'Podcast', title: 'Dan Carlin\u2019s Hardcore History', desc: 'Epic, deeply researched episodes on major historical events. Long-form storytelling at its best.', url: 'https://www.dancarlin.com/hardcore-history-series/', color: '#8B5CF6' },
+    { type: 'Documentary', title: 'Cold War (CNN, 1998)', desc: '24-episode documentary series covering the entire Cold War. Interviews with key figures from both sides.', url: 'https://www.imdb.com/title/tt0170896/', color: '#8b5cf6' }
+  ],
+  'yr11-music': [
+    { type: 'YouTube', title: '12tone \u2014 Music Theory', desc: 'Engaging hand-drawn videos explaining music theory, composition, and analysis concepts.', url: 'https://www.youtube.com/@12tone', color: '#FF0000' },
+    { type: 'YouTube', title: 'Adam Neely', desc: 'Music theory deep dives, jazz analysis, and composition techniques. Great for understanding music elements.', url: 'https://www.youtube.com/@AdamNeely', color: '#FF0000' },
+    { type: 'YouTube', title: 'Rick Beato', desc: 'Music production, theory breakdowns, and "What Makes This Song Great" analysis series.', url: 'https://www.youtube.com/@RickBeato', color: '#FF0000' },
+    { type: 'Website', title: 'musictheory.net', desc: 'Interactive lessons covering notation, scales, keys, intervals, chords, and ear training exercises.', url: 'https://www.musictheory.net/', color: '#e11d48' },
+    { type: 'Website', title: 'Flat.io \u2014 Online Notation', desc: 'Free online music notation tool for composition and arranging. Great for Music Inquiry folio work.', url: 'https://flat.io/', color: '#e11d48' },
+    { type: 'Website', title: 'VCAA Music Inquiry Study Design', desc: 'Official VCAA study design with outcomes, key knowledge, and assessment criteria.', url: 'https://www.vcaa.vic.edu.au/curriculum/vce/vce-study-designs/music/Pages/Index.aspx', color: '#e11d48' }
+  ]
+};
+
+let quizState = { subjectId: null, questions: [], current: 0, score: 0, answered: false, selectedAnswer: null };
+
+function renderStudyZone() {
+  let html = '<div class="section-title">\u{1F3AE} Study Zone</div>';
+
+  if (quizState.subjectId && quizState.questions.length > 0) {
+    html += renderQuizGame();
+  } else {
+    html += '<div class="info-box">Test your knowledge with quick-fire quizzes designed for learning on the go. Pick a subject below to start!</div>';
+    html += '<div class="section-title" style="margin-top:1rem;">Start a Quiz</div>';
+    html += '<div class="quiz-subject-selector">';
+    const quizSubjects = [
+      { id: 'yr11-methods', name: 'Maths Methods', icon: '\u{1F4D0}', color: '#6366f1', count: QUIZ_QUESTIONS['yr11-methods'].length },
+      { id: 'yr11-specialist', name: 'Specialist Maths', icon: '\u{1F9EE}', color: '#059669', count: QUIZ_QUESTIONS['yr11-specialist'].length },
+      { id: 'yr11-physics', name: 'Physics', icon: '\u{269B}\uFE0F', color: '#d97706', count: QUIZ_QUESTIONS['yr11-physics'].length },
+      { id: 'yr11-history', name: 'Modern History', icon: '\u{1F3DB}\uFE0F', color: '#8b5cf6', count: QUIZ_QUESTIONS['yr11-history'].length }
+    ];
+    quizSubjects.forEach(s => {
+      html += `<button class="quiz-subject-btn" onclick="startQuiz('${s.id}')">`;
+      html += `<div class="quiz-subject-icon" style="background:${s.color}">${s.icon}</div>`;
+      html += `<div><div style="font-weight:700;font-size:0.95rem;">${s.name}</div>`;
+      html += `<div style="font-size:0.8rem;color:var(--text-muted);">${s.count} questions \u2022 Unit 1</div></div>`;
+      html += `</button>`;
+    });
+    html += '</div>';
+
+    // Resources section
+    html += '<div class="section-title" style="margin-top:1.5rem;">\u{1F4DA} Learning Resources</div>';
+    const resourceSubjects = [
+      { id: 'yr11-methods', name: 'Maths Methods', color: '#6366f1' },
+      { id: 'yr11-specialist', name: 'Specialist Maths', color: '#059669' },
+      { id: 'yr11-physics', name: 'Physics', color: '#d97706' },
+      { id: 'yr11-history', name: 'Modern History', color: '#8b5cf6' },
+      { id: 'yr11-music', name: 'Music Inquiry', color: '#e11d48' }
+    ];
+    resourceSubjects.forEach(s => {
+      const res = RESOURCES[s.id] || [];
+      if (res.length === 0) return;
+      html += `<div style="margin-bottom:1.5rem;">`;
+      html += `<h3 style="font-size:0.95rem;margin-bottom:0.5rem;color:${s.color}">${s.name}</h3>`;
+      html += '<div class="resource-grid">';
+      res.forEach(r => {
+        html += `<div class="resource-card">`;
+        html += `<div class="resource-type" style="color:${r.color}">${r.type}</div>`;
+        html += `<div class="resource-title">${r.title}</div>`;
+        html += `<div class="resource-desc">${r.desc}</div>`;
+        html += `<a href="${r.url}" target="_blank" rel="noopener" class="resource-link">Open \u2192</a>`;
+        html += `</div>`;
+      });
+      html += '</div></div>';
+    });
+  }
+
+  return html;
+}
+
+function renderQuizGame() {
+  const qs = quizState.questions;
+  const q = qs[quizState.current];
+  const total = qs.length;
+  const progress = ((quizState.current + (quizState.answered ? 1 : 0)) / total) * 100;
+
+  let html = '<div class="quiz-container">';
+
+  // Completed state
+  if (quizState.current >= total) {
+    const pct = Math.round((quizState.score / total) * 100);
+    const emoji = pct >= 80 ? '\u{1F389}' : pct >= 60 ? '\u{1F44D}' : '\u{1F4AA}';
+    html += '<div class="card"><div class="quiz-result">';
+    html += `<div style="font-size:3rem;">${emoji}</div>`;
+    html += `<div class="quiz-score">${quizState.score}/${total}</div>`;
+    html += `<div style="font-size:1.1rem;font-weight:600;margin:0.5rem 0;">${pct}% Correct</div>`;
+    html += `<div style="color:var(--text-muted);margin-bottom:1.5rem;">${pct >= 80 ? 'Outstanding! You really know this material.' : pct >= 60 ? 'Good effort! Review the ones you missed.' : 'Keep studying \u2014 you\u2019ll get there!'}</div>`;
+    html += `<div style="display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;">`;
+    html += `<button class="btn btn-primary" onclick="startQuiz('${quizState.subjectId}')">Try Again</button>`;
+    html += `<button class="btn btn-secondary" onclick="exitQuiz()">Back to Study Zone</button>`;
+    html += `</div></div></div>`;
+    html += '</div>';
+    return html;
+  }
+
+  // Quiz header
+  html += '<div class="card">';
+  html += '<div class="quiz-header">';
+  html += `<span style="font-weight:600;">Question ${quizState.current + 1} of ${total}</span>`;
+  html += `<span style="font-weight:700;color:var(--accent);">Score: ${quizState.score}</span>`;
+  html += `<button class="btn btn-secondary btn-sm" onclick="exitQuiz()">Exit</button>`;
+  html += '</div>';
+  html += `<div class="quiz-progress"><div class="quiz-progress-fill" style="width:${progress}%"></div></div>`;
+
+  html += `<div class="quiz-topic">${q.topic}</div>`;
+  html += `<div class="quiz-question">${q.q}</div>`;
+  html += '<div class="quiz-options">';
+
+  q.opts.forEach((opt, i) => {
+    let cls = 'quiz-option';
+    if (quizState.answered) {
+      if (i === q.ans) cls += ' correct';
+      else if (i === quizState.selectedAnswer && i !== q.ans) cls += ' incorrect';
+      else cls += ' dimmed';
+    }
+    const disabled = quizState.answered ? 'pointer-events:none;' : '';
+    html += `<button class="${cls}" style="${disabled}" onclick="answerQuiz(${i})">${opt}</button>`;
+  });
+  html += '</div>';
+
+  if (quizState.answered) {
+    const isCorrect = quizState.selectedAnswer === q.ans;
+    html += `<div class="quiz-explanation" style="background:${isCorrect ? '#f0fff4' : '#fff5f5'};border-color:${isCorrect ? '#c6f6d5' : '#fed7d7'};">`;
+    html += `<strong>${isCorrect ? '\u2705 Correct!' : '\u274C Incorrect.'}</strong> ${q.explain}`;
+    html += `</div>`;
+    html += `<div style="text-align:center;margin-top:1rem;">`;
+    html += `<button class="btn btn-primary" onclick="nextQuestion()">Next Question \u2192</button>`;
+    html += `</div>`;
+  }
+
+  html += '</div></div>';
+  return html;
+}
+
+function startQuiz(subjectId) {
+  const questions = [...QUIZ_QUESTIONS[subjectId]];
+  // Shuffle
+  for (let i = questions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [questions[i], questions[j]] = [questions[j], questions[i]];
+  }
+  quizState = { subjectId, questions, current: 0, score: 0, answered: false, selectedAnswer: null };
+  render();
+}
+
+function answerQuiz(index) {
+  if (quizState.answered) return;
+  quizState.answered = true;
+  quizState.selectedAnswer = index;
+  if (index === quizState.questions[quizState.current].ans) quizState.score++;
+  render();
+}
+
+function nextQuestion() {
+  quizState.current++;
+  quizState.answered = false;
+  quizState.selectedAnswer = null;
+  render();
+}
+
+function exitQuiz() {
+  quizState = { subjectId: null, questions: [], current: 0, score: 0, answered: false, selectedAnswer: null };
+  render();
+}
+
+// ============================================================
+// UNI & CAREERS VIEW
+// ============================================================
+function renderUniCareers() {
+  let html = '<div class="section-title">\u{1F393} Uni & Careers</div>';
+
+  // Personality & subject analysis
+  html += '<div class="card" style="border-left:4px solid var(--accent);">';
+  html += '<div class="section-title">\u{1F31F} James\u2019s Subject Profile</div>';
+  html += '<p style="font-size:0.95rem;margin-bottom:1rem;">This is a <strong>powerhouse STEM combination</strong> with real creative depth. Double maths (Methods + Specialist) paired with Physics gives James elite quantitative and analytical skills. English ensures strong communication, History develops critical thinking and argumentation, and Music Inquiry adds a genuinely creative and artistic dimension. This combination opens doors to some of the most rewarding and competitive university courses in Australia.</p>';
+
+  html += '<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:0.75rem;margin-bottom:1rem;">';
+
+  const traits = [
+    { icon: '\u{1F9E0}', title: 'Elite Quantitative Thinker', desc: 'Double maths (Methods + Specialist) demonstrates serious mathematical ability. Comfortable with abstract reasoning, proof, calculus, and complex problem-solving.', color: 'var(--methods)' },
+    { icon: '\u{269B}\uFE0F', title: 'Scientific & Analytical', desc: 'Physics combined with strong maths reveals someone who wants to understand how the universe works \u2014 from particles to planets. A natural problem-solver.', color: '#d97706' },
+    { icon: '\u{1F4DD}', title: 'Strong Communicator', desc: 'English develops the ability to construct persuasive arguments, analyse complex texts, and express ideas clearly \u2014 skills valued in every career.', color: '#dc2626' },
+    { icon: '\u{1F3DB}\uFE0F', title: 'Historically Aware', desc: 'Modern History and Revolutions develops critical analysis of sources, understanding of ideology and power, and the ability to construct well-evidenced arguments.', color: '#8b5cf6' },
+    { icon: '\u{1F3B5}', title: 'Creatively Expressive', desc: 'Music Inquiry adds a genuine artistic and creative dimension. Performance, composition, and analysis skills show someone who thinks beyond pure logic.', color: '#e11d48' },
+    { icon: '\u{1F310}', title: 'Versatile & Well-Rounded', desc: 'This combination spans STEM, humanities, and the arts. James has the maths for engineering, the creativity for design, and the communication skills for leadership.', color: 'var(--primary-light)' }
+  ];
+
+  traits.forEach(t => {
+    html += `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem;border-top:3px solid ${t.color};">`;
+    html += `<div style="font-size:1.3rem;margin-bottom:0.25rem;">${t.icon}</div>`;
+    html += `<div style="font-weight:700;font-size:0.95rem;margin-bottom:0.25rem;">${t.title}</div>`;
+    html += `<div style="font-size:0.8rem;color:var(--text-muted);">${t.desc}</div>`;
+    html += `</div>`;
+  });
+  html += '</div>';
+  html += '</div>';
+
+  // University choosing guide
+  html += '<div class="card" style="border-left:4px solid var(--success);">';
+  html += '<div class="section-title">\u{1F914} How to Choose a University & Course</div>';
+  html += '<p style="font-size:0.9rem;margin-bottom:1rem;">Before diving into specific courses, it\u2019s worth thinking about <strong>what matters to you</strong> in a university experience. There\u2019s no single "best" uni \u2014 the right choice depends on your priorities.</p>';
+
+  html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.75rem;margin-bottom:1rem;">';
+
+  const uniFactors = [
+    { icon: '\u{1F3AF}', title: 'Course Content', desc: 'Look at what you\u2019ll actually study. Read the subject lists for years 2\u20133, not just the degree title. A "Bachelor of Science" can mean very different things at different unis.', color: '#6366f1' },
+    { icon: '\u{1F4CD}', title: 'Location & Commute', desc: 'A 90-minute commute each way gets old fast. Consider how you\u2019ll get there, whether you\u2019d live on campus, and how the location fits with part-time work or social life.', color: '#059669' },
+    { icon: '\u{1F3C6}', title: 'Reputation & Rankings', desc: 'Rankings matter for some fields (especially competitive graduate programs like medicine or law), but for most careers, your skills and experience matter more than the name on your degree.', color: '#d97706' },
+    { icon: '\u{1F91D}', title: 'Industry Connections', desc: 'Some unis have stronger ties to specific industries. Deakin excels in sport science partnerships, RMIT is known for industry placements, Melbourne\u2019s brand opens corporate doors.', color: '#dc2626' },
+    { icon: '\u{1F9E9}', title: 'Course Structure', desc: 'Melbourne Model (broad then specialise) vs. Monash (specialise from day one). Some people love exploring first; others want to dive straight into their field. Neither is wrong.', color: '#8b5cf6' },
+    { icon: '\u{1F465}', title: 'Campus Culture & Support', desc: 'Visit on open day. Does it feel right? Check student support services, clubs, study spaces, mental health resources. The \u201cvibe\u201d matters more than you\u2019d think.', color: '#0891b2' }
+  ];
+
+  uniFactors.forEach(f => {
+    html += `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem;border-top:3px solid ${f.color};">`;
+    html += `<div style="font-size:1.3rem;margin-bottom:0.25rem;">${f.icon}</div>`;
+    html += `<div style="font-weight:700;font-size:0.95rem;margin-bottom:0.25rem;">${f.title}</div>`;
+    html += `<div style="font-size:0.8rem;color:var(--text-muted);">${f.desc}</div>`;
+    html += `</div>`;
+  });
+  html += '</div>';
+
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem;">';
+
+  html += '<div style="background:var(--success-bg);border-radius:10px;padding:1rem;">';
+  html += '<div style="font-weight:700;font-size:0.9rem;margin-bottom:0.5rem;color:var(--success);">Types of Degrees</div>';
+  html += '<ul style="font-size:0.8rem;color:var(--text-muted);padding-left:1.2rem;list-style:disc;">';
+  html += '<li><strong>Single degree</strong> \u2014 3\u20134 years in one area</li>';
+  html += '<li><strong>Double degree</strong> \u2014 combine two fields (e.g., Commerce/Science), usually 4\u20135 years</li>';
+  html += '<li><strong>Generalist entry</strong> \u2014 broad first year, specialise later (Melbourne Model)</li>';
+  html += '<li><strong>Specialist entry</strong> \u2014 dive into your field from year 1 (most other unis)</li>';
+  html += '<li><strong>Graduate entry</strong> \u2014 some professions (medicine, law at UniMelb) require a first degree before entering</li>';
+  html += '</ul></div>';
+
+  html += '<div style="background:var(--info-bg);border-radius:10px;padding:1rem;">';
+  html += '<div style="font-weight:700;font-size:0.9rem;margin-bottom:0.5rem;color:var(--accent);">Pro Tips</div>';
+  html += '<ul style="font-size:0.8rem;color:var(--text-muted);padding-left:1.2rem;list-style:disc;">';
+  html += '<li>Your first preference should be your <strong>dream course</strong>, not your "safe" one \u2014 VTAC preferences don\u2019t cost you anything</li>';
+  html += '<li>Many courses accept students below the published ATAR through <strong>special consideration</strong> or adjustment schemes</li>';
+  html += '<li>You can <strong>transfer</strong> between courses or unis after first year in many cases</li>';
+  html += '<li><strong>Gap years</strong> are completely fine \u2014 many employers and unis value the maturity gained</li>';
+  html += '<li>Talk to <strong>current students</strong> at open days, not just marketing staff</li>';
+  html += '</ul></div>';
+  html += '</div>';
+
+  html += '</div>';
+
+  // University courses
+  html += '<div class="card">';
+  html += '<div class="section-title">\u{1F4DA} 10 University Courses Worth Exploring</div>';
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">These courses are well-matched to James\u2019s subject combination, spanning engineering, science, computing, music, and more. ATAR requirements shown are indicative based on 2025/2026 data.</p>';
+
+  const courses = [
+    {
+      name: 'Bachelor of Engineering (Honours)',
+      uni: 'University of Melbourne',
+      atar: '90',
+      fit: 'Methods + Specialist + Physics is the ideal foundation. Specialisations in mechanical, electrical, civil, software, and mechatronics. Melbourne Model means broad first year.',
+      color: '#003366',
+      tag: 'Engineering'
+    },
+    {
+      name: 'Bachelor of Science',
+      uni: 'University of Melbourne',
+      atar: '91',
+      fit: 'Maths Methods is a prerequisite. Physics and Specialist Maths map to majors in Physics, Mathematics, Data Science, or Computing. Enormous flexibility across 30+ majors.',
+      color: '#003366',
+      tag: 'Science (Broad)'
+    },
+    {
+      name: 'Bachelor of Engineering (Honours) / Bachelor of Science',
+      uni: 'Monash University',
+      atar: '~90',
+      fit: 'Double degree combining engineering with a science major. Double maths and physics are perfect preparation. Options include electrical, aerospace, software, and materials engineering.',
+      color: '#006DAE',
+      tag: 'Engineering + Science'
+    },
+    {
+      name: 'Bachelor of Computer Science',
+      uni: 'University of Melbourne',
+      atar: '90',
+      fit: 'Specialist Maths and Methods provide the mathematical foundations. Logic, proof, and graph theory from Specialist are directly applicable to algorithms and computing.',
+      color: '#003366',
+      tag: 'Computing / Tech'
+    },
+    {
+      name: 'Bachelor of Music',
+      uni: 'University of Melbourne (Melbourne Conservatorium)',
+      atar: '~70 + audition',
+      fit: 'Music Inquiry provides direct preparation. Performance, composition, and musicology pathways. Audition and interview are key alongside academic results.',
+      color: '#003366',
+      tag: 'Music / Creative Arts'
+    },
+    {
+      name: 'Bachelor of Actuarial Science',
+      uni: 'Monash University',
+      atar: '~93',
+      fit: 'One of the most maths-intensive degrees. Double maths (Methods + Specialist) is ideal. Combines statistics, probability, and financial mathematics. High earning potential.',
+      color: '#006DAE',
+      tag: 'Maths / Finance'
+    },
+    {
+      name: 'Bachelor of Architectural Design',
+      uni: 'University of Melbourne',
+      atar: '85',
+      fit: 'Combines creativity (Music) with mathematical precision (Methods, Physics). Architecture blends art, engineering, and design thinking. Leads to Master of Architecture.',
+      color: '#003366',
+      tag: 'Architecture / Design'
+    },
+    {
+      name: 'Bachelor of Data Science',
+      uni: 'Monash University',
+      atar: '~85',
+      fit: 'Double maths provides exceptional preparation. Combines statistics, programming, and machine learning. One of the fastest-growing career fields globally.',
+      color: '#006DAE',
+      tag: 'Data / Tech'
+    },
+    {
+      name: 'Bachelor of Education (Secondary \u2014 Maths/Science)',
+      uni: 'La Trobe University / Deakin University',
+      atar: '~70',
+      fit: 'Double maths + physics means James could teach senior maths and physics. In high demand. Both La Trobe and Deakin offer strong secondary education programs.',
+      color: '#E31B23',
+      tag: 'Teaching'
+    },
+    {
+      name: 'Bachelor of Audio Engineering / Sound Production',
+      uni: 'RMIT University / SAE Institute',
+      atar: '~60\u201370',
+      fit: 'Bridges physics (acoustics, waves, electricity) with music (performance, composition). Careers in recording, live sound, film audio, game audio, and music production.',
+      color: '#E60028',
+      tag: 'Music / Tech'
+    }
+  ];
+
+  courses.forEach((c, i) => {
+    html += `<div style="display:flex;gap:1rem;padding:1rem 0;${i < courses.length - 1 ? 'border-bottom:1px solid var(--border);' : ''}align-items:flex-start;">`;
+    html += `<div style="width:32px;height:32px;border-radius:50%;background:${c.color};color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">${i + 1}</div>`;
+    html += `<div style="flex:1;">`;
+    html += `<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.25rem;">`;
+    html += `<strong style="font-size:0.95rem;">${c.name}</strong>`;
+    html += `<span style="font-size:0.75rem;background:var(--bg-subtle);padding:0.1rem 0.4rem;border-radius:4px;color:var(--text-muted);">${c.tag}</span>`;
+    html += `</div>`;
+    html += `<div style="font-size:0.85rem;color:${c.color};font-weight:600;margin-bottom:0.25rem;">${c.uni} \u2022 ATAR: ${c.atar}</div>`;
+    html += `<div style="font-size:0.8rem;color:var(--text-muted);">${c.fit}</div>`;
+    html += `</div></div>`;
+  });
+
+  html += '</div>';
+
+  // University Open Days
+  html += '<div class="card">';
+  html += '<div class="section-title">\u{1F3EB} 2026 Victorian University Open Days</div>';
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Open days are the best way to explore campuses, talk to lecturers, and get a feel for university life. Most are held in July\u2013August. Check university websites closer to the date for registration details.</p>';
+
+  const openDays = [
+    { uni: 'Swinburne University of Technology', date: 'Sunday 26 July 2026', campus: 'Hawthorn', status: 'Confirmed', color: '#F26522' },
+    { uni: 'La Trobe University', date: 'Early August 2026 (TBC)', campus: 'Bundoora (Melbourne)', status: 'Expected', color: '#E31B23' },
+    { uni: 'RMIT University', date: 'August 2026 (TBC)', campus: 'City, Brunswick, Bundoora', status: 'Expected', color: '#E60028' },
+    { uni: 'Monash University', date: 'August 2026 (TBC)', campus: 'Clayton & Parkville', status: 'Expected', color: '#006DAE' },
+    { uni: 'University of Melbourne', date: 'Sunday 16 August 2026', campus: 'Parkville', status: 'Confirmed', color: '#003366' },
+    { uni: 'Victoria University', date: 'Sunday 16 August 2026', campus: 'Footscray Park', status: 'Confirmed', color: '#004B87' },
+    { uni: 'Deakin University', date: 'August 2026 (TBC)', campus: 'Burwood, Geelong', status: 'Expected', color: '#00AEEF' },
+    { uni: 'Australian Catholic University', date: 'August 2026 (TBC)', campus: 'Fitzroy (Melbourne)', status: 'Expected', color: '#7B2D8E' },
+    { uni: 'Victoria University', date: 'Sunday 30 August 2026', campus: 'City Tower', status: 'Confirmed', color: '#004B87' }
+  ];
+
+  html += '<div style="overflow-x:auto;">';
+  html += '<table class="assessment-table"><thead><tr>';
+  html += '<th>University</th><th>Date</th><th>Campus</th><th>Status</th>';
+  html += '</tr></thead><tbody>';
+
+  openDays.forEach(od => {
+    const statusBadge = od.status === 'Confirmed'
+      ? '<span class="badge badge-done">Confirmed</span>'
+      : '<span class="badge" style="background:var(--warning-bg);color:var(--warning-text);">Expected</span>';
+    html += `<tr>`;
+    html += `<td><strong style="color:${od.color}">${od.uni}</strong></td>`;
+    html += `<td>${od.date}</td>`;
+    html += `<td style="font-size:0.8rem">${od.campus}</td>`;
+    html += `<td>${statusBadge}</td>`;
+    html += `</tr>`;
+  });
+
+  html += '</tbody></table></div>';
+
+  html += '<div class="info-box" style="margin-top:1rem;">Tip: Bookmark <strong>vtac.edu.au/opendays</strong> \u2014 VTAC maintains an updated list of all Victorian open days as universities confirm their 2026 dates (usually announced around April\u2013May).</div>';
+
+  html += '</div>';
+
+  return html;
+}
+
+// ============================================================
+// SETTINGS VIEW
+// ============================================================
+function renderSettings() {
+  let html = '<div class="section-title">\u2699\uFE0F Settings & Data</div>';
+
+  html += '<div class="card">';
+  html += '<div class="settings-section">';
+  html += '<h3>Export / Import Data</h3>';
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;">Export your dates, results, and notes as a JSON file to share with family members or back up your data. Each family member can import the same file to stay in sync.</p>';
+  html += '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;">';
+  html += '<button class="btn btn-primary" onclick="exportData()">Export Data</button>';
+  html += '<button class="btn btn-secondary" onclick="document.getElementById(\'importFile\').click()">Import Data</button>';
+  html += '<input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">';
+  html += '</div>';
+  html += '</div>';
+  html += '</div>';
+
+  html += '<div class="card">';
+  html += '<div class="settings-section">';
+  html += '<h3>Reset Customisations</h3>';
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;">Reset all subject/assessment customisations (added assessments, changed weights) back to defaults. This does NOT delete your dates, results, or notes.</p>';
+  html += '<button class="btn btn-danger btn-sm" onclick="resetSubjects()">Reset to Default Assessments</button>';
+  html += '</div>';
+  html += '</div>';
+
+  html += '<div class="card">';
+  html += '<div class="settings-section">';
+  html += '<h3>Clear All Data</h3>';
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;">Permanently delete all saved dates, results, notes, and customisations. This cannot be undone.</p>';
+  html += '<button class="btn btn-danger btn-sm" onclick="clearAllData()">Clear Everything</button>';
+  html += '</div>';
+  html += '</div>';
+
+  html += '<div class="card">';
+  html += '<div class="settings-section">';
+  html += '<h3>About</h3>';
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);">James VCE Study Master helps track VCE assessment tasks, dates, and results for Year 11 and 12 subjects at Warranwood Rudolf Steiner.</p>';
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Year 12 assessment weightings are set by VCAA. Year 11 weightings are estimates \u2014 update them to match the school\u2019s actual assessment outline.</p>';
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Data is stored locally in your browser. Use Export/Import to share between devices.</p>';
+  html += '</div>';
+  html += '</div>';
+
+  return html;
+}
+
+// ============================================================
+// CALCULATIONS
+// ============================================================
+function calcWeightedAvg(sub, state) {
+  let totalWeight = 0;
+  let weightedSum = 0;
+  sub.assessments.forEach(a => {
+    const data = state[a.id] || {};
+    if (data.result !== undefined && data.result !== null && data.result !== '' && data.resultTotal) {
+      const pct = (parseFloat(data.result) / parseFloat(data.resultTotal)) * 100;
+      weightedSum += pct * a.weight;
+      totalWeight += a.weight;
+    }
+  });
+  if (totalWeight === 0) return null;
+  return Math.round((weightedSum / totalWeight) * 10) / 10;
+}
+
+// ============================================================
+// EVENT HANDLERS
+// ============================================================
+function toggleSubject(id) {
+  expandedSubjects[id] = !expandedSubjects[id];
+  render();
+}
+
+function updateDate(assessmentId, value) {
+  setAssessmentData(assessmentId, { date: value || null });
+  // Don't re-render to avoid losing focus, but update dashboard if on it
+}
+
+function updateResult(assessmentId, value) {
+  setAssessmentData(assessmentId, { result: value === '' ? null : parseFloat(value) });
+}
+
+function updateResultTotal(assessmentId, value) {
+  setAssessmentData(assessmentId, { resultTotal: value === '' ? null : parseFloat(value) });
+}
+
+function updateNotes(assessmentId, value) {
+  setAssessmentData(assessmentId, { notes: value });
+}
+
+function addAssessment(subjectId) {
+  const modal = document.getElementById('modal');
+  const content = document.getElementById('modal-content');
+  content.innerHTML = `
+    <h2>Add Assessment</h2>
+    <div class="form-group">
+      <label>Assessment Name</label>
+      <input type="text" id="new-name" placeholder="e.g. SAC 7: Topic Name">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Type</label>
+        <select id="new-type">
+          <option>SAC</option>
+          <option>Test</option>
+          <option>Investigation</option>
+          <option>Essay</option>
+          <option>Exam</option>
+          <option>Assignment</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Weight (%)</label>
+        <input type="number" id="new-weight" min="0" max="100" value="10">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Unit</label>
+        <input type="text" id="new-unit" placeholder="e.g. 1, 2, 3">
+      </div>
+      <div class="form-group">
+        <label>Area of Study</label>
+        <input type="text" id="new-area" placeholder="e.g. AoS 1">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Description (optional)</label>
+      <textarea id="new-desc" rows="2" placeholder="Brief description of what this assessment covers"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveNewAssessment('${subjectId}')">Add Assessment</button>
+    </div>
+  `;
+  modal.classList.add('open');
+}
+
+function saveNewAssessment(subjectId) {
+  const name = document.getElementById('new-name').value.trim();
+  if (!name) { alert('Please enter a name'); return; }
+  const type = document.getElementById('new-type').value;
+  const weight = parseFloat(document.getElementById('new-weight').value) || 0;
+  const unit = document.getElementById('new-unit').value.trim() || '1';
+  const area = document.getElementById('new-area').value.trim();
+  const desc = document.getElementById('new-desc').value.trim();
+
+  const subjects = getSubjects();
+  const sub = subjects.find(s => s.id === subjectId);
+  if (!sub) return;
+
+  const newId = subjectId + '-custom-' + Date.now();
+  sub.assessments.push({
+    id: newId,
+    name,
+    type,
+    weight,
+    unit,
+    area,
+    description: desc
+  });
+
+  saveCustomSubjects(subjects);
+  closeModal();
+  render();
+}
+
+function editWeights(subjectId) {
+  const subjects = getSubjects();
+  const sub = subjects.find(s => s.id === subjectId);
+  if (!sub) return;
+
+  const modal = document.getElementById('modal');
+  const content = document.getElementById('modal-content');
+
+  let formHtml = '<h2>Edit Assessment Weights</h2>';
+  formHtml += '<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Adjust the percentage weights to match your school\u2019s assessment outline. Weights should add up to 100%.</p>';
+
+  sub.assessments.forEach((a, i) => {
+    formHtml += `<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">`;
+    formHtml += `<input type="number" class="input-sm" id="weight-${i}" value="${a.weight}" min="0" max="100" style="width:65px">`;
+    formHtml += `<span style="font-size:0.85rem;flex:1">${a.name}</span>`;
+    formHtml += `<button class="btn btn-danger btn-sm" onclick="deleteAssessment('${subjectId}', ${i})" style="font-size:0.7rem;padding:0.2rem 0.4rem;">\u2715</button>`;
+    formHtml += `</div>`;
+  });
+
+  formHtml += `<div id="weight-total" style="font-weight:600;margin-top:0.5rem;font-size:0.9rem;"></div>`;
+  formHtml += `<div class="modal-actions">`;
+  formHtml += `<button class="btn btn-secondary" onclick="closeModal()">Cancel</button>`;
+  formHtml += `<button class="btn btn-primary" onclick="saveWeights('${subjectId}', ${sub.assessments.length})">Save Weights</button>`;
+  formHtml += `</div>`;
+
+  content.innerHTML = formHtml;
+  modal.classList.add('open');
+
+  // Update total display
+  function updateTotal() {
+    let total = 0;
+    for (let i = 0; i < sub.assessments.length; i++) {
+      const input = document.getElementById('weight-' + i);
+      if (input) total += parseFloat(input.value) || 0;
+    }
+    const el = document.getElementById('weight-total');
+    if (el) {
+      el.textContent = `Total: ${total}%`;
+      el.style.color = total === 100 ? 'var(--success)' : 'var(--danger)';
+    }
+  }
+  updateTotal();
+  for (let i = 0; i < sub.assessments.length; i++) {
+    const input = document.getElementById('weight-' + i);
+    if (input) input.addEventListener('input', updateTotal);
+  }
+}
+
+function saveWeights(subjectId, count) {
+  const subjects = getSubjects();
+  const sub = subjects.find(s => s.id === subjectId);
+  if (!sub) return;
+
+  for (let i = 0; i < count; i++) {
+    const input = document.getElementById('weight-' + i);
+    if (input && sub.assessments[i]) {
+      sub.assessments[i].weight = parseFloat(input.value) || 0;
+    }
+  }
+
+  saveCustomSubjects(subjects);
+  closeModal();
+  render();
+}
+
+function deleteAssessment(subjectId, index) {
+  if (!confirm('Delete this assessment?')) return;
+  const subjects = getSubjects();
+  const sub = subjects.find(s => s.id === subjectId);
+  if (!sub) return;
+  sub.assessments.splice(index, 1);
+  saveCustomSubjects(subjects);
+  closeModal();
+  render();
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+// Export / Import
+function exportData() {
+  const state = loadState();
+  const subjects = getCustomSubjects();
+  const exportObj = {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    assessmentData: state,
+    customSubjects: subjects
+  };
+  const blob = new Blob([JSON.stringify(exportObj, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'james-vce-data-' + new Date().toISOString().slice(0, 10) + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (data.assessmentData) {
+        const current = loadState();
+        const merged = { ...current, ...data.assessmentData };
+        saveState(merged);
+      }
+      if (data.customSubjects) {
+        saveCustomSubjects(data.customSubjects);
+      }
+      alert('Data imported successfully!');
+      render();
+    } catch (err) {
+      alert('Error importing file: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function resetSubjects() {
+  if (!confirm('Reset all assessment customisations to defaults? Your dates, results, and notes will be kept.')) return;
+  localStorage.removeItem(STORAGE_KEY + '_subjects');
+  render();
+}
+
+function clearAllData() {
+  if (!confirm('Delete ALL data including dates, results, and notes? This cannot be undone.')) return;
+  if (!confirm('Are you sure? This will permanently erase everything.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem(STORAGE_KEY + '_subjects');
+  render();
+}
+
+// Close modal on overlay click
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// Close modal on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+    closeGame();
+  }
+});
+
+function attachEventListeners() {
+  // Event listeners are attached inline for simplicity
+}
+
+// ============================================================
+// EASTER EGGS
+// ============================================================
+
+// Konami code: Up Up Down Down Left Right Left Right B A
+const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+let konamiIndex = 0;
+
+document.addEventListener('keydown', function(e) {
+  if (document.getElementById('gameOverlay').classList.contains('open')) return;
+  if (e.key === KONAMI[konamiIndex]) {
+    konamiIndex++;
+    if (konamiIndex === KONAMI.length) {
+      konamiIndex = 0;
+      launchSnakeGame();
+    }
+  } else {
+    konamiIndex = 0;
+  }
+});
+
+// Triple-click/tap title for memory game
+let titleClickCount = 0;
+let titleClickTimer = null;
+document.querySelector('.header h1').addEventListener('click', function(e) {
+  if (e.target.closest('.theme-toggle') || e.target.closest('#rocketIcon')) return;
+  titleClickCount++;
+  clearTimeout(titleClickTimer);
+  titleClickTimer = setTimeout(() => { titleClickCount = 0; }, 500);
+  if (titleClickCount >= 3) {
+    titleClickCount = 0;
+    launchMemoryGame();
+  }
+});
+
+// Tap rocket emoji 5 times for Snake (mobile-friendly Konami alternative)
+let rocketTapCount = 0;
+let rocketTapTimer = null;
+document.getElementById('rocketIcon').addEventListener('click', function(e) {
+  e.stopPropagation();
+  rocketTapCount++;
+  clearTimeout(rocketTapTimer);
+  rocketTapTimer = setTimeout(() => { rocketTapCount = 0; }, 800);
+  if (rocketTapCount >= 5) {
+    rocketTapCount = 0;
+    launchSnakeGame();
+  }
+});
+
+function closeGame() {
+  const overlay = document.getElementById('gameOverlay');
+  overlay.classList.remove('open');
+  if (window._snakeInterval) {
+    clearInterval(window._snakeInterval);
+    window._snakeInterval = null;
+  }
+}
+
+// ---- SNAKE GAME ----
+function launchSnakeGame() {
+  const overlay = document.getElementById('gameOverlay');
+  const container = document.getElementById('gameContainer');
+  container.innerHTML = `
+    <div class="game-header">
+      <h2>🐍 Snake</h2>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <span id="snakeScore" style="font-weight:700;color:var(--accent);">Score: 0</span>
+        <button class="game-close" onclick="closeGame()">&times;</button>
+      </div>
+    </div>
+    <div class="game-body" style="display:flex;flex-direction:column;align-items:center;padding:1rem;">
+      <canvas id="snakeCanvas" width="380" height="380" style="border:2px solid var(--border);border-radius:8px;background:#0f172a;max-width:100%;"></canvas>
+      <div style="text-align:center;padding-top:0.75rem;font-size:0.8rem;color:var(--text-muted);">Arrow keys or swipe to move. Eat the food to grow!</div>
+    </div>
+  `;
+  overlay.classList.add('open');
+
+  const canvas = document.getElementById('snakeCanvas');
+  const ctx = canvas.getContext('2d');
+  const gridSize = 20;
+  const tileCount = Math.floor(canvas.width / gridSize);
+
+  let snake = [{x: 10, y: 10}];
+  let food = {x: 15, y: 15};
+  let dx = 0, dy = 0;
+  let score = 0;
+  let gameRunning = true;
+
+  function placeFood() {
+    food.x = Math.floor(Math.random() * tileCount);
+    food.y = Math.floor(Math.random() * tileCount);
+    for (let seg of snake) {
+      if (seg.x === food.x && seg.y === food.y) return placeFood();
+    }
+  }
+
+  function draw() {
+    ctx.fillStyle = '#0f172a';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Grid
+    ctx.strokeStyle = '#1e293b';
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i <= tileCount; i++) {
+      ctx.beginPath(); ctx.moveTo(i * gridSize, 0); ctx.lineTo(i * gridSize, canvas.height); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, i * gridSize); ctx.lineTo(canvas.width, i * gridSize); ctx.stroke();
+    }
+    // Food
+    ctx.fillStyle = '#fbbf24';
+    ctx.shadowColor = '#fbbf24';
+    ctx.shadowBlur = 10;
+    ctx.beginPath();
+    ctx.arc(food.x * gridSize + gridSize/2, food.y * gridSize + gridSize/2, gridSize/2 - 2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    // Snake
+    snake.forEach((seg, i) => {
+      const isHead = i === 0;
+      ctx.fillStyle = isHead ? '#8b5cf6' : '#6366f1';
+      ctx.shadowColor = isHead ? '#8b5cf6' : 'transparent';
+      ctx.shadowBlur = isHead ? 8 : 0;
+      const r = 4;
+      const x = seg.x * gridSize + 1, y = seg.y * gridSize + 1, w = gridSize - 2, h = gridSize - 2;
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    });
+  }
+
+  function update() {
+    if (!gameRunning) return;
+    if (dx === 0 && dy === 0) { draw(); return; }
+    const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+    if (head.x < 0) head.x = tileCount - 1;
+    if (head.x >= tileCount) head.x = 0;
+    if (head.y < 0) head.y = tileCount - 1;
+    if (head.y >= tileCount) head.y = 0;
+    for (let seg of snake) {
+      if (seg.x === head.x && seg.y === head.y) {
+        gameRunning = false;
+        clearInterval(window._snakeInterval);
+        ctx.fillStyle = 'rgba(0,0,0,0.7)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 24px system-ui';
+        ctx.textAlign = 'center';
+        ctx.fillText('Game Over!', canvas.width/2, canvas.height/2 - 10);
+        ctx.font = '16px system-ui';
+        ctx.fillText('Score: ' + score, canvas.width/2, canvas.height/2 + 20);
+        ctx.fillText('Press Space to restart', canvas.width/2, canvas.height/2 + 50);
+        return;
+      }
+    }
+    snake.unshift(head);
+    if (head.x === food.x && head.y === food.y) {
+      score++;
+      document.getElementById('snakeScore').textContent = 'Score: ' + score;
+      placeFood();
+    } else {
+      snake.pop();
+    }
+    draw();
+  }
+
+  function handleSnakeKey(e) {
+    if (!document.getElementById('gameOverlay').classList.contains('open')) return;
+    switch(e.key) {
+      case 'ArrowUp': if (dy !== 1) { dx = 0; dy = -1; } e.preventDefault(); break;
+      case 'ArrowDown': if (dy !== -1) { dx = 0; dy = 1; } e.preventDefault(); break;
+      case 'ArrowLeft': if (dx !== 1) { dx = -1; dy = 0; } e.preventDefault(); break;
+      case 'ArrowRight': if (dx !== -1) { dx = 1; dy = 0; } e.preventDefault(); break;
+      case ' ':
+        if (!gameRunning) {
+          snake = [{x: 10, y: 10}]; dx = 0; dy = 0; score = 0; gameRunning = true;
+          document.getElementById('snakeScore').textContent = 'Score: 0';
+          placeFood();
+          window._snakeInterval = setInterval(update, 120);
+        }
+        e.preventDefault();
+        break;
+    }
+  }
+
+  document.removeEventListener('keydown', window._snakeHandler);
+  window._snakeHandler = handleSnakeKey;
+  document.addEventListener('keydown', window._snakeHandler);
+
+  // Touch/swipe controls for mobile
+  let touchStartX = 0, touchStartY = 0;
+  canvas.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    e.preventDefault();
+    // Tap to restart when game over
+    if (!gameRunning) {
+      snake = [{x: 10, y: 10}]; dx = 0; dy = 0; score = 0; gameRunning = true;
+      document.getElementById('snakeScore').textContent = 'Score: 0';
+      placeFood();
+      window._snakeInterval = setInterval(update, 120);
+    }
+  }, { passive: false });
+  canvas.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
+  canvas.addEventListener('touchend', function(e) {
+    const diffX = e.changedTouches[0].clientX - touchStartX;
+    const diffY = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(diffX) < 10 && Math.abs(diffY) < 10) return; // too small, ignore
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX > 0 && dx !== -1) { dx = 1; dy = 0; }
+      else if (diffX < 0 && dx !== 1) { dx = -1; dy = 0; }
+    } else {
+      if (diffY > 0 && dy !== -1) { dx = 0; dy = 1; }
+      else if (diffY < 0 && dy !== 1) { dx = 0; dy = -1; }
+    }
+  });
+
+  placeFood();
+  draw();
+  window._snakeInterval = setInterval(update, 120);
+}
+
+// ---- MEMORY MATCH GAME ----
+function launchMemoryGame() {
+  const overlay = document.getElementById('gameOverlay');
+  const container = document.getElementById('gameContainer');
+  const emojis = ['\u{1F4D0}','\u{1F9EE}','\u{1F4D6}','\u{269B}\uFE0F','\u{1F3DB}\uFE0F','\u{1F3B5}','\u{1F52C}','\u{1F3AF}'];
+  const cards = [...emojis, ...emojis];
+  for (let i = cards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cards[i], cards[j]] = [cards[j], cards[i]];
+  }
+  let flipped = [];
+  let matched = [];
+  let moves = 0;
+  let canFlip = true;
+
+  function renderBoard() {
+    let html = `<div class="game-header"><h2>\u{1F9E0} Memory Match</h2><div style="display:flex;align-items:center;gap:1rem;">`;
+    html += `<span id="memoryMoves" style="font-weight:700;color:var(--accent);">Moves: ${moves}</span>`;
+    html += `<span id="memoryPairs" style="font-weight:700;color:var(--success);">Pairs: ${matched.length/2}/8</span>`;
+    html += `<button class="game-close" onclick="closeGame()">&times;</button></div></div>`;
+    html += `<div class="game-body"><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;max-width:400px;margin:0 auto;">`;
+    cards.forEach((emoji, i) => {
+      const isFlipped = flipped.includes(i) || matched.includes(i);
+      const isMatched = matched.includes(i);
+      html += `<div class="memory-card ${isFlipped ? 'flipped' : ''} ${isMatched ? 'matched' : ''}" onclick="window._flipCard(${i})">`;
+      html += isFlipped ? emoji : '?';
+      html += `</div>`;
+    });
+    html += `</div><div style="text-align:center;margin-top:0.75rem;font-size:0.8rem;color:var(--text-muted);">Match all the subject emoji pairs!</div></div>`;
+    container.innerHTML = html;
+  }
+
+  window._flipCard = function(index) {
+    if (!canFlip) return;
+    if (flipped.includes(index) || matched.includes(index)) return;
+    flipped.push(index);
+    renderBoard();
+    if (flipped.length === 2) {
+      moves++;
+      canFlip = false;
+      const [a, b] = flipped;
+      if (cards[a] === cards[b]) {
+        matched.push(a, b);
+        flipped = [];
+        canFlip = true;
+        renderBoard();
+        if (matched.length === cards.length) {
+          setTimeout(() => {
+            container.innerHTML = `<div class="game-header"><h2>\u{1F9E0} Memory Match</h2><button class="game-close" onclick="closeGame()">&times;</button></div>
+              <div class="game-body" style="text-align:center;padding:2rem;">
+                <div style="font-size:3rem;margin-bottom:0.5rem;">\u{1F389}</div>
+                <div class="gradient-text" style="font-size:1.5rem;font-weight:800;">You Win!</div>
+                <div style="margin:0.5rem 0;color:var(--text-muted);">Completed in ${moves} moves</div>
+                <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:1rem;">
+                  <button class="btn btn-primary" onclick="launchMemoryGame()">Play Again</button>
+                  <button class="btn btn-secondary" onclick="closeGame()">Close</button>
+                </div>
+              </div>`;
+          }, 500);
+        }
+      } else {
+        setTimeout(() => {
+          flipped = [];
+          canFlip = true;
+          renderBoard();
+        }, 800);
+      }
+    }
+  };
+
+  overlay.classList.add('open');
+  renderBoard();
+}
+
+// ============================================================
+// INIT
+// ============================================================
+init();
+</script>
+</body>
+</html>
