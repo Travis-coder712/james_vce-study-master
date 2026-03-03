@@ -897,6 +897,52 @@ input[type="number"].input-sm { width: 65px; }
 }
 .resource-link:hover { text-decoration: underline; }
 
+.resource-subject-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.resource-subject-card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.resource-subject-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  text-align: left;
+  color: var(--text);
+}
+.resource-subject-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.resource-subject-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.resource-subject-icon { font-size: 1.3rem; }
+.resource-chevron { font-size: 0.7rem; color: var(--text-muted); }
+.resource-subject-card.open .resource-subject-btn {
+  border-radius: 10px 10px 0 0;
+  border-bottom: none;
+  background: var(--bg-subtle);
+}
+.resource-subject-card.open .resource-grid {
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  background: var(--bg-subtle);
+}
+
 /* Scaling slider */
 .scaling-slider-container {
   display: flex;
@@ -2083,6 +2129,30 @@ const QUIZ_QUESTIONS = {
     { q: 'If P(A) = 0.3, what is P(not A)?', opts: ['0.3', '0.7', '0.1', '1.3'], ans: 1, topic: 'Probability', explain: 'Complementary events: P(not A) = 1 - P(A) = 1 - 0.3 = 0.7. The probabilities of all outcomes must sum to 1.' },
     { q: 'What is the factored form of x\u00B2 - 9?', opts: ['(x-3)(x+3)', '(x-9)(x+1)', '(x-3)\u00B2', 'Cannot be factored'], ans: 0, topic: 'Algebra', explain: 'This is a difference of two squares: a\u00B2 - b\u00B2 = (a-b)(a+b). So x\u00B2 - 9 = x\u00B2 - 3\u00B2 = (x-3)(x+3).' },
     { q: 'Solve: 2x + 5 = 17', opts: ['x = 6', 'x = 11', 'x = 7', 'x = 5'], ans: 0, topic: 'Algebra', explain: '2x + 5 = 17 \u2192 2x = 12 \u2192 x = 6. Always check: 2(6) + 5 = 17 \u2713' }
+  ],
+  'yr11-english': [
+    { q: 'What is "metalanguage" in English?', opts: ['Slang used in essays', 'Language used to describe or analyse language itself', 'A foreign language reference', 'The title of a text'], ans: 1, topic: 'Text Analysis', explain: 'Metalanguage is the terminology used to discuss how texts work \u2014 words like "metaphor", "tone", "symbolism", "narrative voice". Using metalanguage shows analytical skill.' },
+    { q: 'What is the difference between tone and mood?', opts: ['They mean the same thing', 'Tone is the author\u2019s attitude; mood is the feeling created in the reader', 'Tone is for poetry only; mood is for prose', 'Mood is the author\u2019s attitude; tone is the reader\u2019s feeling'], ans: 1, topic: 'Language Features', explain: 'Tone is the writer\u2019s attitude toward the subject (e.g., sarcastic, earnest). Mood is the atmosphere or emotional feeling the text creates in the reader (e.g., tense, melancholic).' },
+    { q: 'What are the three persuasive appeals identified by Aristotle?', opts: ['Simile, metaphor, personification', 'Ethos, pathos, logos', 'Introduction, body, conclusion', 'Narrative, expository, persuasive'], ans: 1, topic: 'Argument Analysis', explain: 'Ethos (credibility/ethics), Pathos (emotion), and Logos (logic/reason) are the three classical persuasive appeals used in argument and rhetoric.' },
+    { q: 'What does "authorial intent" refer to?', opts: ['The author\u2019s biography', 'What the author deliberately aims to convey or achieve through their writing', 'The publication date', 'The genre of the text'], ans: 1, topic: 'Context & Purpose', explain: 'Authorial intent is the purpose behind the writer\u2019s choices \u2014 what they want the reader to think, feel, or understand. Analysing intent shows deeper engagement with the text.' },
+    { q: 'What is a simile?', opts: ['A direct comparison without "like" or "as"', 'A comparison using "like" or "as"', 'Giving human qualities to non-human things', 'An exaggerated statement'], ans: 1, topic: 'Language Features', explain: 'A simile compares two things using "like" or "as" (e.g., "brave as a lion"). A metaphor makes the comparison directly without these words.' },
+    { q: 'In a text response essay, what should the introduction contain?', opts: ['A personal story', 'A contention that directly responds to the topic, plus key points', 'A summary of the entire plot', 'Quotes from the text only'], ans: 1, topic: 'Analytical Writing', explain: 'A strong introduction states your contention (thesis/argument) in response to the prompt and briefly outlines the key ideas you\u2019ll explore. Avoid plot summary.' },
+    { q: 'What is personification?', opts: ['A comparison using "like"', 'Giving human qualities to non-human things', 'Repeating words for emphasis', 'Using exaggeration for effect'], ans: 1, topic: 'Language Features', explain: 'Personification attributes human characteristics to non-human things (e.g., "the wind whispered"). It makes descriptions more vivid and emotionally engaging.' },
+    { q: 'What does "context" mean when analysing a text?', opts: ['The number of pages', 'The historical, social, and cultural circumstances surrounding the text\u2019s creation or setting', 'The font used', 'The price of the book'], ans: 1, topic: 'Context & Purpose', explain: 'Context includes the time period, social conditions, cultural values, and personal circumstances that influenced the author and shape how we interpret the text.' },
+    { q: 'What is the purpose of embedding quotes in an analytical essay?', opts: ['To fill up word count', 'To provide textual evidence that supports your argument', 'To show you read the book', 'To replace your own analysis'], ans: 1, topic: 'Analytical Writing', explain: 'Embedded quotes provide direct evidence from the text to support your argument. They should be woven naturally into your sentences and followed by analysis of their significance.' },
+    { q: 'What is "contention" in argument analysis?', opts: ['A type of metaphor', 'The main argument or point of view being presented', 'A factual statement', 'The conclusion of an essay'], ans: 1, topic: 'Argument Analysis', explain: 'A contention is the writer\u2019s main argument or position on an issue. Identifying the contention is the first step in analysing any persuasive text.' }
+  ],
+  'yr11-music': [
+    { q: 'What are the four main elements of music?', opts: ['Verse, chorus, bridge, coda', 'Melody, harmony, rhythm, texture', 'Piano, guitar, drums, bass', 'Forte, piano, crescendo, diminuendo'], ans: 1, topic: 'Music Language', explain: 'The four core elements are melody (pitch sequence), harmony (chords/vertical pitch), rhythm (time patterns), and texture (how parts combine). Dynamics, timbre, and form are also important.' },
+    { q: 'What does "allegro" mean as a tempo marking?', opts: ['Slow and stately', 'Fast and lively', 'Moderately', 'Very slow'], ans: 1, topic: 'Music Language', explain: 'Allegro means fast and lively (roughly 120\u2013156 BPM). Other common markings: Adagio (slow), Andante (walking pace), Presto (very fast).' },
+    { q: 'What is a chord progression?', opts: ['A melody played on one note', 'A sequence of chords that forms a harmonic pattern', 'A type of scale', 'A rhythm pattern'], ans: 1, topic: 'Music Analysis', explain: 'A chord progression is a series of chords played in sequence. Common progressions include I-IV-V-I in classical music and I-V-vi-IV in pop music.' },
+    { q: 'What time signature means three beats per bar with a quarter note getting one beat?', opts: ['4/4', '3/4', '6/8', '2/4'], ans: 1, topic: 'Music Language', explain: '3/4 time has 3 beats per bar with the quarter note as the beat unit. It\u2019s the time signature of waltzes. 4/4 is "common time" with 4 beats per bar.' },
+    { q: 'What does "forte" (f) indicate?', opts: ['Soft', 'Loud', 'Fast', 'Slow'], ans: 1, topic: 'Music Language', explain: 'Forte (f) means loud. Piano (p) means soft. Other dynamic markings: ff (fortissimo/very loud), pp (pianissimo/very soft), mf (mezzo forte/moderately loud), mp (mezzo piano/moderately soft).' },
+    { q: 'What is "texture" in music?', opts: ['The feel of an instrument', 'How different musical parts or layers combine in a piece', 'The volume of the music', 'The speed of the music'], ans: 1, topic: 'Music Analysis', explain: 'Texture describes how musical lines interact. Types include monophonic (single melody), homophonic (melody with accompaniment), polyphonic (multiple independent melodies), and heterophonic.' },
+    { q: 'What is ABA form (ternary form)?', opts: ['A piece with no repeating sections', 'A three-part structure where the first section returns after a contrasting middle section', 'A form with only two sections', 'A type of chord progression'], ans: 1, topic: 'Composition', explain: 'ABA (ternary) form has three sections: A (theme), B (contrasting section), A (return of theme). The return of A gives the piece unity and closure.' },
+    { q: 'What is the difference between major and minor keys?', opts: ['Major is faster, minor is slower', 'Major generally sounds bright/happy; minor sounds darker/sadder', 'Major uses sharps, minor uses flats', 'There is no difference'], ans: 1, topic: 'Music Analysis', explain: 'Major keys tend to sound bright, happy, or triumphant. Minor keys sound darker, sadder, or more mysterious. The difference comes from the pattern of intervals in their scales.' },
+    { q: 'What does "staccato" mean?', opts: ['Play smoothly and connected', 'Play notes short and detached', 'Play very loudly', 'Play in a slow tempo'], ans: 1, topic: 'Performance', explain: 'Staccato means notes are played short and detached, indicated by a dot above/below the note. The opposite is legato, meaning smooth and connected.' },
+    { q: 'What is a riff in popular music?', opts: ['A type of musical form', 'A short repeated melodic or rhythmic phrase that forms a hook', 'A classical composition technique', 'A vocal warm-up exercise'], ans: 1, topic: 'Music Analysis', explain: 'A riff is a short, repeated musical phrase, often played on guitar or keyboard, that forms the basis or hook of a song. Famous examples include the opening of "Smoke on the Water".' }
   ]
 };
 
@@ -2122,10 +2192,24 @@ const RESOURCES = {
     { type: 'Website', title: 'musictheory.net', desc: 'Interactive lessons covering notation, scales, keys, intervals, chords, and ear training exercises.', url: 'https://www.musictheory.net/', color: '#e11d48' },
     { type: 'Website', title: 'Flat.io \u2014 Online Notation', desc: 'Free online music notation tool for composition and arranging. Great for Music Inquiry folio work.', url: 'https://flat.io/', color: '#e11d48' },
     { type: 'Website', title: 'VCAA Music Inquiry Study Design', desc: 'Official VCAA study design with outcomes, key knowledge, and assessment criteria.', url: 'https://www.vcaa.vic.edu.au/curriculum/vce/vce-study-designs/music/Pages/Index.aspx', color: '#e11d48' }
+  ],
+  'yr11-english': [
+    { type: 'YouTube', title: 'Lisa Tran \u2014 VCE English', desc: 'VCE English tips: text response essays, comparative analysis, and exam strategies.', url: 'https://www.youtube.com/@lisas-study-guides', color: '#FF0000' },
+    { type: 'YouTube', title: 'Crash Course Literature', desc: 'Engaging analysis of classic and modern texts. Great for building analytical skills.', url: 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtOeEc9ME62zTfqc0h6Pe8vb', color: '#FF0000' },
+    { type: 'Website', title: 'VCAA English Study Design', desc: 'Official VCE English study design \u2014 outcomes, key knowledge, assessment criteria.', url: 'https://www.vcaa.vic.edu.au/curriculum/vce/vce-study-designs/english/Pages/Index.aspx', color: '#dc2626' },
+    { type: 'Podcast', title: 'The VCE English Podcast', desc: 'Tips on text analysis, essay writing, and exam technique for VCE English students.', url: 'https://podcasts.apple.com/au/podcast/the-vce-english-podcast/id1458932804', color: '#8B5CF6' },
+    { type: 'Website', title: 'Lisa\'s Study Guides', desc: 'Free VCE English text guides, essay topic breakdowns, and study tips.', url: 'https://www.lisasStudyguides.com/', color: '#dc2626' }
   ]
 };
 
 let quizState = { subjectId: null, questions: [], current: 0, score: 0, answered: false, selectedAnswer: null };
+
+let expandedResourceSubject = null;
+
+function toggleResourceSubject(id) {
+  expandedResourceSubject = expandedResourceSubject === id ? null : id;
+  render();
+}
 
 function renderStudyZone() {
   let html = '<div class="section-title">\u{1F3AE} Study Zone</div>';
@@ -2139,8 +2223,10 @@ function renderStudyZone() {
     const quizSubjects = [
       { id: 'yr11-methods', name: 'Maths Methods', icon: '\u{1F4D0}', color: '#6366f1', count: QUIZ_QUESTIONS['yr11-methods'].length },
       { id: 'yr11-specialist', name: 'Specialist Maths', icon: '\u{1F9EE}', color: '#059669', count: QUIZ_QUESTIONS['yr11-specialist'].length },
+      { id: 'yr11-english', name: 'English', icon: '\u{1F4DA}', color: '#dc2626', count: QUIZ_QUESTIONS['yr11-english'].length },
       { id: 'yr11-physics', name: 'Physics', icon: '\u{269B}\uFE0F', color: '#d97706', count: QUIZ_QUESTIONS['yr11-physics'].length },
-      { id: 'yr11-history', name: 'Modern History', icon: '\u{1F3DB}\uFE0F', color: '#8b5cf6', count: QUIZ_QUESTIONS['yr11-history'].length }
+      { id: 'yr11-history', name: 'Modern History', icon: '\u{1F3DB}\uFE0F', color: '#8b5cf6', count: QUIZ_QUESTIONS['yr11-history'].length },
+      { id: 'yr11-music', name: 'Music Inquiry', icon: '\u{1F3B5}', color: '#e11d48', count: QUIZ_QUESTIONS['yr11-music'].length }
     ];
     quizSubjects.forEach(s => {
       html += `<button class="quiz-subject-btn" onclick="startQuiz('${s.id}')">`;
@@ -2153,29 +2239,47 @@ function renderStudyZone() {
 
     // Resources section
     html += '<div class="section-title" style="margin-top:1.5rem;">\u{1F4DA} Learning Resources</div>';
+    html += '<div class="info-box" style="margin-bottom:0.75rem;">Tap a subject to see curated YouTube channels, podcasts, websites, and more.</div>';
+    html += '<div class="resource-subject-grid">';
     const resourceSubjects = [
-      { id: 'yr11-methods', name: 'Maths Methods', color: '#6366f1' },
-      { id: 'yr11-specialist', name: 'Specialist Maths', color: '#059669' },
-      { id: 'yr11-physics', name: 'Physics', color: '#d97706' },
-      { id: 'yr11-history', name: 'Modern History', color: '#8b5cf6' },
-      { id: 'yr11-music', name: 'Music Inquiry', color: '#e11d48' }
+      { id: 'yr11-methods', name: 'Maths Methods', icon: '\u{1F4D0}', color: '#6366f1' },
+      { id: 'yr11-specialist', name: 'Specialist Maths', icon: '\u{1F9EE}', color: '#059669' },
+      { id: 'yr11-english', name: 'English', icon: '\u{1F4DA}', color: '#dc2626' },
+      { id: 'yr11-physics', name: 'Physics', icon: '\u{269B}\uFE0F', color: '#d97706' },
+      { id: 'yr11-history', name: 'Modern History', icon: '\u{1F3DB}\uFE0F', color: '#8b5cf6' },
+      { id: 'yr11-music', name: 'Music Inquiry', icon: '\u{1F3B5}', color: '#e11d48' }
     ];
     resourceSubjects.forEach(s => {
       const res = RESOURCES[s.id] || [];
       if (res.length === 0) return;
-      html += `<div style="margin-bottom:1.5rem;">`;
-      html += `<h3 style="font-size:0.95rem;margin-bottom:0.5rem;color:${s.color}">${s.name}</h3>`;
-      html += '<div class="resource-grid">';
-      res.forEach(r => {
-        html += `<div class="resource-card">`;
-        html += `<div class="resource-type" style="color:${r.color}">${r.type}</div>`;
-        html += `<div class="resource-title">${r.title}</div>`;
-        html += `<div class="resource-desc">${r.desc}</div>`;
-        html += `<a href="${r.url}" target="_blank" rel="noopener" class="resource-link">Open \u2192</a>`;
-        html += `</div>`;
-      });
-      html += '</div></div>';
+      const types = {};
+      res.forEach(r => { types[r.type] = (types[r.type] || 0) + 1; });
+      const summary = Object.entries(types).map(([t, c]) => `${c} ${t}`).join(' \u00B7 ');
+      const isOpen = expandedResourceSubject === s.id;
+      html += `<div class="resource-subject-card${isOpen ? ' open' : ''}">`;
+      html += `<button class="resource-subject-btn" onclick="toggleResourceSubject('${s.id}')" style="border-left:4px solid ${s.color}">`;
+      html += `<div class="resource-subject-info">`;
+      html += `<span class="resource-subject-icon">${s.icon}</span>`;
+      html += `<div><div style="font-weight:700;font-size:0.95rem;">${s.name}</div>`;
+      html += `<div style="font-size:0.78rem;color:var(--text-muted);">${summary}</div></div>`;
+      html += `</div>`;
+      html += `<span class="resource-chevron">${isOpen ? '\u25B2' : '\u25BC'}</span>`;
+      html += `</button>`;
+      if (isOpen) {
+        html += '<div class="resource-grid" style="margin-top:0.75rem;">';
+        res.forEach(r => {
+          html += `<div class="resource-card">`;
+          html += `<div class="resource-type" style="color:${r.color}">${r.type}</div>`;
+          html += `<div class="resource-title">${r.title}</div>`;
+          html += `<div class="resource-desc">${r.desc}</div>`;
+          html += `<a href="${r.url}" target="_blank" rel="noopener" class="resource-link">Open \u2192</a>`;
+          html += `</div>`;
+        });
+        html += '</div>';
+      }
+      html += '</div>';
     });
+    html += '</div>';
   }
 
   return html;
@@ -2508,8 +2612,36 @@ function renderUniCareers() {
 // SETTINGS VIEW
 // ============================================================
 function renderSettings() {
-  let html = '<div class="section-title">\u2699\uFE0F Settings & Data</div>';
+  let html = '<div class="section-title">\u2699\uFE0F Settings & Info</div>';
 
+  // How This App Works
+  html += '<div class="card">';
+  html += '<div class="settings-section">';
+  html += '<h3>\u{1F4D6} How This App Works</h3>';
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;">This app is your personal VCE study tracker. Here\'s what each section does:</p>';
+  html += '<div style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;">';
+  html += '<p><strong>Dashboard</strong> \u2014 Your home screen. Shows which subjects you\'re studying this semester, upcoming assessments, and a quick overview of how you\'re tracking. Use the semester buttons to switch between Sem 1 and Sem 2 for Year 11 and Year 12.</p>';
+  html += '<p style="margin-top:0.5rem;"><strong>Year 11 / Year 12</strong> \u2014 Tap into any subject to see all your SACs and exams. You can set due dates, enter your results (as a percentage), and add personal notes. The app calculates your weighted average automatically based on VCAA weightings.</p>';
+  html += '<p style="margin-top:0.5rem;"><strong>Study Zone</strong> \u2014 Quick-fire quizzes for every subject to test your knowledge on the go. Plus curated learning resources \u2014 YouTube channels, podcasts, websites, and documentaries \u2014 all hand-picked for your subjects.</p>';
+  html += '<p style="margin-top:0.5rem;"><strong>Uni & Careers</strong> \u2014 See how your subjects connect to university degrees and career paths. Includes an ATAR estimator to give you a rough idea of where your aggregate might land, and an explanation of how ATAR scaling works.</p>';
+  html += '</div>';
+  html += '</div>';
+  html += '</div>';
+
+  // Hidden Games
+  html += '<div class="card">';
+  html += '<div class="settings-section">';
+  html += '<h3>\u{1F3AE} Hidden Games</h3>';
+  html += '<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;">There are a few hidden games built into the app for when you need a study break:</p>';
+  html += '<div style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;">';
+  html += '<p>\u{1F9E0} <strong>Memory Match</strong> \u2014 Triple-click (or triple-tap) the app title "James VCE Study Master" at the top of the page.</p>';
+  html += '<p style="margin-top:0.25rem;">\u{1F40D} <strong>Snake Game</strong> \u2014 Tap the rocket emoji in the header 5 times quickly. On a keyboard, you can also enter the Konami Code: \u2191 \u2191 \u2193 \u2193 \u2190 \u2192 \u2190 \u2192 B A</p>';
+  html += '<p style="margin-top:0.25rem;">\u{1F319} <strong>Dark Mode</strong> \u2014 Tap the moon/sun icon next to the app title to toggle dark mode.</p>';
+  html += '</div>';
+  html += '</div>';
+  html += '</div>';
+
+  // Export / Import Data
   html += '<div class="card">';
   html += '<div class="settings-section">';
   html += '<h3>Export / Import Data</h3>';
